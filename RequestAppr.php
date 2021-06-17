@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Suggestions</title>
+  <title>Requests for Approval</title>
   
   <!-- Favicons -->
   <link href="./assets/Images/page/books.png" rel="icon">
@@ -51,8 +51,8 @@
           
           <li><a href="StudentList.php">Students</a></li>
           <li><a href="FacultyList.php">Faculties</a></li>
-          <li class="active"><a href="Suggestion.php">Suggestions</a></li>
-          <li><a href="RequestAppr.php">Approve Requests</a></li>
+          <li><a href="Suggestion.php">Suggestions</a></li>
+          <li class="active"><a href="RequestAppr.php">Approve Requests</a></li>
           <li><a href="Report_at_Libr.php">Reports</a></li>
           
 
@@ -66,48 +66,55 @@
 <!------------Stuednt List Table-------------->
 
 <div class="container">
-  <h2>Suggestions For Students:</h2>
+  <h2>Books CheckIn Requests to Approve:</h2>
     
-  <p>Type something in the input field to search the table:</p>  
+  <p>Search Here..</p>  
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
 
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Faculty ID</th>
-        <th>Faculty Name</th>
-        <th>Dept</th>
-        <th>Level</th>
-        <th>Term</th>
-        <th>Course Code</th>
+        <th>Name</th>
+        <th>ID</th>
         <th>Book Name</th>
         <th>Author Name</th>
-        <th style="width:15%">...</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody id="myTable">
-        <tr>
-            <td>f_201914040</td>
-            <td>Sazia Tabassum</td>
-            <td>CSE</td>
-            <td>2</td>
-            <td>1</td>
-            <td>201</td>
+        <tr>            
+            <td>Ramiza Aliya</td>
+            <td>f_201914015</td>
             <td>Digital Logic Design</td>
             <td>Mr John</td>  
-            <td>TextBook</td>   
+            <td><button type="button" class="btn btn-outline-success">Approve</button></td> 
+            <td><button type="button" class="btn btn-outline-danger">Reject</button></td>  
           </tr>
-          <tr>
-            <td>f_201914039</td>
-            <td>Raiyan Jahangir</td>
-            <td>ME</td>
-            <td>2</td>
-            <td>2</td>
-            <td>263</td>
-            <td>Thermal Energy</td>  
-            <td>Md Kamal</td> 
-            <td>ReferenceBook</td>      
+          <tr>            
+            <td>Sazia Tabassum</td>
+            <td>f_201914040</td>
+            <td>Computer & Network Security</td>
+            <td>Mr Thomson</td>  
+            <td><button type="button" class="btn btn-outline-success">Approve</button></td>
+            <td><button type="button" class="btn btn-outline-danger">Reject</button></td>   
+          </tr>
+          <tr>            
+            <td>Sabrina Afrin</td>
+            <td>s_201914055</td>
+            <td>Digital Logic Design</td>
+            <td>Mr John</td>  
+            <td><button type="button" class="btn btn-outline-success">Approve</button></td> 
+            <td><button type="button" class="btn btn-outline-danger">Reject</button></td>  
+          </tr>
+          <tr>            
+            <td>Abedur Rahman</td>
+            <td>s_201914011</td>
+            <td>Architectural Engineer's Solutions Suite</td>
+            <td>hbsd efj</td>  
+            <td><button type="button" class="btn btn-outline-success">Approve</button></td> 
+            <td><button type="button" class="btn btn-outline-danger">Reject</button></td>  
           </tr>
     </tbody>
   </table>
@@ -123,9 +130,6 @@
       });
     });
     </script>
-
-
-
 
 
   <!-- ======= Footer ======= -->

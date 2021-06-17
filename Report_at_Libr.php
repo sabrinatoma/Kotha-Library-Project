@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Suggestions</title>
+  <title>Reports</title>
   
   <!-- Favicons -->
   <link href="./assets/Images/page/books.png" rel="icon">
@@ -21,7 +21,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-  <link href="CSSAll/TablesListCSS.css" rel="stylesheet">
+  <link href="CSSAll/PersonListCSS.css" rel="stylesheet">
 
   <!--======================================================== -->
 </head>
@@ -51,9 +51,9 @@
           
           <li><a href="StudentList.php">Students</a></li>
           <li><a href="FacultyList.php">Faculties</a></li>
-          <li class="active"><a href="Suggestion.php">Suggestions</a></li>
+          <li><a href="Suggestion.php">Suggestions</a></li>
           <li><a href="RequestAppr.php">Approve Requests</a></li>
-          <li><a href="Report_at_Libr.php">Reports</a></li>
+          <li class="active"><a href="Report_at_Libr.php">Reports</a></li>
           
 
         </ul>

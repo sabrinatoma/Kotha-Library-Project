@@ -114,7 +114,7 @@
   <!--type-------->
   <div class="type">
     <h5>Computer & Network Security</h5>
-  <span>Author</span>
+  <span>Mr Thomson</span>
   <div>
     <h6>Available: 6</h6>
   </div>
