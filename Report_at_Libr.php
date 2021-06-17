@@ -21,7 +21,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-  <link href="CSSAll/PersonListCSS.css" rel="stylesheet">
+  <link href="CSSAll/Repot_at_LibrCSS.css" rel="stylesheet">
 
   <!--======================================================== -->
 </head>
@@ -66,54 +66,74 @@
 <!------------Stuednt List Table-------------->
 
 <div class="container">
-  <h2>Suggestions For Students:</h2>
+  <h2>Reports & Requests from Students & Faculties:</h2>
+  <br><br>
     
-  <p>Type something in the input field to search the table:</p>  
-  <input class="form-control" id="myInput" type="text" placeholder="Search..">
-  <br>
+  <div class="row">
+        <div class="col-10">
+            <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#report">Reports</a>
+                </li>
+                                    
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#reqToCollect">Requests to Collect Books</a>
+                </li>
+                
+            </ul>
 
-  <table class="table table-striped">
+            <!-- Tab panes -->
+            <div class="tab-content ml-1" id="myTabContent">
+                <div id="report" class="tab-pane fade show active"><br>
+
+                <p>Search Librarian:</p>  
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <br>
+
+                <table class="table table-hover">
     <thead>
       <tr>
-        <th>Faculty ID</th>
-        <th>Faculty Name</th>
-        <th>Dept</th>
-        <th>Level</th>
-        <th>Term</th>
-        <th>Course Code</th>
-        <th>Book Name</th>
-        <th>Author Name</th>
-        <th style="width:15%">...</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone No.</th>
+        <th>Topic</th>
+        <th>Report</th>
+        <th>..</th>
       </tr>
     </thead>
     <tbody id="myTable">
-        <tr>
-            <td>f_201914040</td>
-            <td>Sazia Tabassum</td>
-            <td>CSE</td>
-            <td>2</td>
-            <td>1</td>
-            <td>201</td>
-            <td>Digital Logic Design</td>
-            <td>Mr John</td>  
-            <td>TextBook</td>   
-          </tr>
-          <tr>
-            <td>f_201914039</td>
-            <td>Raiyan Jahangir</td>
-            <td>ME</td>
-            <td>2</td>
-            <td>2</td>
-            <td>263</td>
-            <td>Thermal Energy</td>  
-            <td>Md Kamal</td> 
-            <td>ReferenceBook</td>      
-          </tr>
+      <tr>
+        <td>s_564543234</td>
+        <td>MD Sajid</td>
+        <td>sajid@gmail.com</td>
+        <td>01928335652</td>
+        <td>Page of Book missing.</td> 
+        <td>There are 30 pages missing from the book Engineering Design.<br>I can't find the chapter I need to read!! </td>               
+        <td><button type="button" class="btn btn-outline-success">Solved</button></td>
+      </tr>
+      <tr>
+        <td>f_564546334</td>
+        <td>Pinky Rahman</td>
+        <td>pinks@gmail.com</td>
+        <td>01923635848</td>
+        <td>Pages of Book is blank.</td> 
+        <td>There are 4 pages are blank from the book Engineering Design.<br>The page numbers ar 289, 627, 183, 388. </td>                
+        <td><button type="button" class="btn btn-outline-success">Solved</button></td>              
+      </tr>
+      <tr>
+        <td>s_564543234</td>
+        <td>MD Sajid</td>
+        <td>sajid@gmail.com</td>
+        <td>01928335652</td>
+        <td>Page of Book missing.</td> 
+        <td>There are 30 pages missing from the book Engineering Design.<br>I can't find the chapter I need to read!! </td>               
+        <td><button type="button" class="btn btn-outline-success">Solved</button></td>               
+      </tr>
+      
     </tbody>
   </table>
-</div>
-
-<script>
+  <script>
     $(document).ready(function(){
       $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
@@ -123,7 +143,80 @@
       });
     });
     </script>
+            </div>
 
+            <!-- Tab panes -->
+            <div id="reqToCollect" class="container tab-pane fade"><br>
+            <p>Search Librarian:</p>  
+              <input class="form-control" id="myInput2" type="text" placeholder="Search..">
+              <br>
+              
+              <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Book Name</th>
+        <th>Author Name</th>
+        <th>..</th>
+      </tr>
+    </thead>
+    <tbody id="myTable2">
+          <tr>            
+            <td>Ramiza Aliya</td>
+            <td>f_201914015</td>
+            <td>aliya@gmail.com</td>
+            <td>Digital Logic Design</td>
+            <td>Mr John</td>  
+            <td><button type="button" class="btn btn-outline-success">Collected</button></td> 
+            </tr>
+          <tr>            
+            <td>Sazia Tabassum</td>
+            <td>f_201914040</td>
+            <td>sazia@gmail.com</td>
+            <td>Computer & Network Security</td>
+            <td>Mr Thomson</td>  
+            <td><button type="button" class="btn btn-outline-success">Collected</button></td>
+            </tr>
+          <tr>            
+            <td>Sabrina Afrin</td>
+            <td>s_201914055</td>
+            <td>afrin@gmail.com</td>
+            <td>Digital Logic Design</td>
+            <td>Mr John</td>  
+            <td><button type="button" class="btn btn-outline-success">Collected</button></td> 
+            </tr>
+          <tr>            
+            <td>Abedur Rahman</td>
+            <td>s_201914011</td>
+            <td>abed@gmail.com</td>
+            <td>Architectural Engineer's Solutions Suite</td>
+            <td>hbsd efj</td>  
+            <td><button type="button" class="btn btn-outline-success">Collected</button></td> 
+            </tr>
+      
+    </tbody>
+  </table>
+  
+</div>          
+
+<script>
+    $(document).ready(function(){
+      $("#myInput2").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable2 tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+
+        </div>
+    </div>
+
+</div>
+</div>
 
 
 

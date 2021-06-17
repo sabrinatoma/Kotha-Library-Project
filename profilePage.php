@@ -216,10 +216,10 @@ session_start();
                                 </div>
                             </div>
                         </div>
-
+                        <button type="button" class="btn btn-primary">Sign Out</button>
 
                     </div>
-
+                    
                 </div>
             </div>
         </div>
