@@ -169,8 +169,8 @@ session_start();
                                             <div class="col-md-8 col-6">
                                                 CSE-19
                                             </div>
-                                        </div>-->
-                                        <hr />
+                                        </div>
+                                        <hr />-->
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
@@ -183,29 +183,94 @@ session_start();
                                         
 
                                     </div>
+
+                                    <!-- Tab panes -->
                                     <div id="BorrowedList" class="container tab-pane fade"><br>
-                                        <div class="row">                                            
-                                            <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
-                                            </div>
-                                            <div class="col-md-8 col-6">
-                                                Something
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
-                                            </div>
-                                            <div class="col-md-8 col-6">
-                                                Something
-                                            </div>
-                                        </div>
-                
+                                    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Book Name</th>
+        <th>Author Name</th>
+        <th>Issue Date</th>
+        <th>Due Date</th>
+        <th>Renew</th>
+      </tr>
+    </thead>
+    <tbody id="myTable">
+      <tr>
+        <td>Architectural Engineering Desing</td>
+        <td>Paul Smith</td>
+        <td>04-02-2021</td>
+        <td id="duedate">14-03-2021</td>
+        <td><input type="date" id="myDate" value="dd-mm-yy"><button type="button" class="btn btn-light" onclick="myFunction()">Confirm</button></td>
+      </tr>
+      <tr>
+        <td>Digital Logic Design</td>
+        <td>Mr John</td>
+        <td>02-01-2021</td>
+        <td id="duedate">02-04-2021</td>
+        <td><input type="date" id="myDate" value="dd-mm-yy"><button type="button" class="btn btn-light" onclick="myFunction()">Confirm</button></td>
+      </tr>
+      <tr>
+        <td>Engineering Design</td>
+        <td>Newton Swuimer</td>
+        <td>02-04-2021</td>
+        <td id="duedate">18-08-2021</td>
+        <td><input type="date" id="myDate" value="dd-mm-yy"><button type="button" class="btn btn-light" onclick="myFunction()">Confirm</button></td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myDate").value;
+  document.getElementById("duedate").innerHTML = x;
+}
+</script>
                                     </div>
 
+                                    <!-- Tab panes -->
                                     <div id="Fine" class="container tab-pane fade"><br>
-                                        
+                                    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Book Name</th>
+        <th>Author Name</th>
+        <th>Issue Date</th>
+        <th>Due Date</th>
+        <th>Late Day</th>
+        <th>Fine Ammount (Taka)</th>
+      </tr>
+    </thead>
+    <tbody id="myTable">
+      <tr>
+        <td>Architectural Engineering Desing</td>
+        <td>Paul Smith</td>
+        <td>04-02-2021</td>
+        <td>14-03-2021</td>
+        <td>3</td>
+        <td>15</td>    
+    </tr>
+      <tr>
+        <td>Digital Logic Design</td>
+        <td>Mr John</td>
+        <td>02-01-2021</td>
+        <td>02-04-2021</td>
+        <td>4</td>
+        <td>20</td></tr>
+      <tr>
+        <td>Engineering Design</td>
+        <td>Newton Swuimer</td>
+        <td>02-04-2021</td>
+        <td>18-08-2021</td>
+        <td>1</td>
+        <td>5</td>
+    </tr>
+      
+    </tbody>
+  </table>
                 
                                     </div>
 
