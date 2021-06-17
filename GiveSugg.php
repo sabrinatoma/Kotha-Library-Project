@@ -5,15 +5,16 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Contact</title>
-  
-  <!-- Favicons -->
-  <link href="./assets/Images/page/books.png" rel="icon">
+  <title>Recommand Books</title>
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <link href="CSSAll/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,6 +23,90 @@
 
 
   <link href="CSSAll/ContactCSS.css" rel="stylesheet">
+
+  <!------------------Add row script-------------->
+  <!---------------------------------------------->
+  <script>
+    $(document).ready(function () {
+  
+      // Denotes total number of rows
+      var rowIdx = 0;
+  
+      // jQuery button click event to add a row
+      $('#addBtn').on('click', function () {
+  
+        // Adding a row inside the tbody.
+        $('#tbody').append(`<tr id="R${++rowIdx}">
+             <td class="row-index text-center">
+             <input type="Text" placeholder="BookName">
+             </td>
+             <td class="row-index text-center">
+             <input type="Text" placeholder="AuthorName">
+             </td>
+             <td class="row-index text-center">
+             <input type="Text" placeholder="For which Level">
+             </td>
+             <td class="row-index text-center">
+             <input type="Text" placeholder="For which Term">
+             </td>
+             <td class="row-index text-center">
+             <input type="Text" placeholder="Course ID">
+             </td>
+             <td class="row-index text-center">
+             <label class="container">
+                <input type="radio" checked="checked" name="radio">Text
+                  <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="radio" name="radio">Reference
+                <span class="checkmark"></span>
+            </label>
+             </td>
+              <td class="text-center">
+                <button class="btn btn-danger remove"
+                  type="button">Remove</button>
+                </td>
+              </tr>`);
+      });
+  
+      // jQuery button click event to remove a row.
+      $('#tbody').on('click', '.remove', function () {
+  
+        // Getting all the rows next to the row
+        // containing the clicked button
+        var child = $(this).closest('tr').nextAll();
+  
+        // Iterating across all the rows 
+        // obtained to change the index
+        child.each(function () {
+  
+          // Getting <tr> id.
+          var id = $(this).attr('id');
+  
+          // Getting the <p> inside the .row-index class.
+          var idx = $(this).children('.row-index').children('p');
+  
+          // Gets the row number from <tr> id.
+          var dig = parseInt(id.substring(1));
+  
+          // Modifying row index.
+          idx.html(`Row ${dig - 1}`);
+  
+          // Modifying row id.
+          $(this).attr('id', `R${dig - 1}`);
+        });
+  
+        // Removing the current row.
+        $(this).closest('tr').remove();
+  
+        // Decreasing total number of rows by 1.
+        rowIdx--;
+      });
+    });
+  </script>
+
+
+
 
   <!--======================================================== -->
 </head>
@@ -48,8 +133,8 @@
             </ul>
           </li> 
           <li><a href="profilePage.php">Account</a></li>
-          <li><a href="Suggestion.php">Suggestions</a></li>
-          <li class="active"><a href="Contact.php">Contact</a></li>
+          <li class="active"><a href="GiveSugg.php">Recommand Books</a></li>
+          <li><a href="Contact.php">Contact</a></li>
           <li><a href="">Cart</a></li>
           
 
@@ -61,140 +146,34 @@
 
 
 <!------------Stuednt List Table-------------->
-
 <div class="container">
-  <h2>For Any Query or Need, Contact With Us.</h2><br>
-    
+  <h2>Recommend Books For Students.</h2><br>
 
-  <div class="row">
-        <div class="col-10">
-            <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#report">Report</a>
-                </li>
-                                    
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#LibrarianList">Contact Librarians</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#requestBook">Request a Book</a>
-                </li>
-
-            </ul>
-
-            <!-- Tab panes -->
-            <div class="tab-content ml-1" id="myTabContent">
-                <div id="report" class="tab-pane fade show active"><br>
-                <form>
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" class="form-control" id="name" placeholder="Enter Your Name" name="name">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="id" placeholder="Enter Your ID" name="id">
-                        </div>
-                        <br><br>
-                        
-                            <input type="text" class="form-control" id="topic" placeholder="What its about?" name="topic">
-                        
-                        <br>
-                        <br>
-                        <textarea class="form-control" rows="5" id="msg" placeholder="Your Massage.." name="msg"></textarea>
-                        <br><br><br>
-                    </div>
-                    <br><button type="submit" class="btn btn-primary">Submit</button>
-                    <br><br>
-                </form>
-            </div>
-
-            <!-- Tab panes -->
-            <div id="LibrarianList" class="container tab-pane fade"><br>
-            <p>Search Librarian:</p>  
-  <input class="form-control" id="myInput" type="text" placeholder="Search..">
-  <br>
-              
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Librarian ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone No.</th>
-        <th>Designation</th>
-      </tr>
-    </thead>
-    <tbody id="myTable">
-      <tr>
-        <td>l_564543234</td>
-        <td>MD kuddus Ali</td>
-        <td>kuddus@gmail.com</td>
-        <td>01928374652</td>
-        <td>Library Manager</td>                
-      </tr>
-      <tr>
-        <td>l_840239349</td>
-        <td>MD Rohim</td>
-        <td>rohim@gmail.com</td>
-        <td>017399402923</td>
-        <td>Library Manager</td>                
-      </tr>
-      <tr>
-        <td>l_5634524133</td>
-        <td>MD Taher vhuiya</td>
-        <td>tvhuiya@gmail.com</td>
-        <td>0192872932</td>
-        <td>Library Assistent</td>                
-      </tr>
-      
-    </tbody>
-  </table>
-</div>
-
-<script>
-    $(document).ready(function(){
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    });
-    </script>
-            
-
-<!-- Tab panes -->
-<div id="requestBook" class="container tab-pane fade"><br>
-<form>
-    <div class="form-row">
-        <div class="col">
-            <input type="text" class="form-control" id="name" placeholder="Enter Your Name" name="name">
-        </div>
-        <div class="col">
-            <input type="text" class="form-control" id="id" placeholder="Enter Your ID" name="id">
-        </div>
-            <br><br>
-            <input type="text" class="form-control" id="Bookname" placeholder="Name of the Book" name="Bookname">
-            <br><br>
-            <input type="text" class="form-control" id="authorname" placeholder="Name of the Author" name="authorname">
-            <br><br>
-            
+  <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center">Book Name</th>
+            <th class="text-center">Author Name</th>
+            <th class="text-center" id="lev">For Level</th>
+            <th class="text-center" id="ter">For Term</th>
+            <th class="text-center" id="cid">Course ID</th>
+            <th class="text-center">Type</th>
+            <th class="text-center">..</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+  
+        </tbody>
+      </table>
     </div>
-        <br><button type="submit" class="btn btn-primary">Submit</button>
-        <br><br>
-</form>
+    <button class="btn btn-md btn-primary" 
+      id="addBtn" type="button">
+        Add new Row
+    </button>
+    <br><br>
+  
 </div>
-
-
-
-        </div>
-    </div>
-
-</div>
-</div>
-
-
-
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

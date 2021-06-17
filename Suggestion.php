@@ -66,7 +66,7 @@
 <!------------Stuednt List Table-------------->
 
 <div class="container">
-  <h2>Suggestions For Students:</h2>
+  <h2>Suggestion Books For Students:</h2>
     
   <p>Type something in the input field to search the table:</p>  
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
