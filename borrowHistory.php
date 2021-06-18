@@ -4,10 +4,6 @@
   <title>Borrow History</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-    crossorigin="anonymous">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -29,7 +25,7 @@
   <h2>List of borrowed Books:</h2>
 
   <p>Search:</p>  
-  <input class="form-control" id="myInput" type="text" placeholder="Type Something..">
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
   <td><button type="button" class="btn remove">Checked Out</button></td>
   <br>
@@ -81,7 +77,6 @@
     });
     </script>
 
-
 <script>
 $(document).ready(function () {
     // Find and remove selected table rows
@@ -94,53 +89,6 @@ $(document).ready(function () {
         });
     });
 </script>
-
-
-
-
-<!--
-<script>
-$(document).ready(function () {
-
-// Denotes total number of rows
-var rowIdx = 0;
-
-// jQuery button click event to remove a row.
-$('#myTable').on('click', '.remove', function () {
-  
-  // Getting all the rows next to the row
-  // containing the clicked button
-  var child = $(this).closest('tr').nextAll();
-
-  // Iterating across all the rows 
-  // obtained to change the index
-  child.each(function () {
-
-    // Getting <tr> id.
-    var id = $(this).attr('id');
-
-    // Getting the <p> inside the .row-index class.
-    var idx = $(this).children('.row-index').children('p');
-
-    // Gets the row number from <tr> id.
-    var dig = parseInt(id.substring(1));
-
-    // Modifying row index.
-    idx.html(`Row ${dig - 1}`);
-
-    // Modifying row id.
-    $(this).attr('id', `R${dig - 1}`);
-  });
-
-  // Removing the current row.
-  $(this).closest('tr').remove();
-
-  // Decreasing total number of rows by 1.
-  rowIdx--;
-});
-});
-</script>
--->
 
 
 </body>

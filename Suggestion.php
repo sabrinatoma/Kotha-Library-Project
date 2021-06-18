@@ -1,3 +1,9 @@
+
+<?php
+@ob_start();
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,27 +38,28 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">Kotha</a></h1>
+      <h1 class="logo mr-auto"><a href="#">Kotha</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li><a href="index.html">Home</a></li>
+        <?php
+        $IDD= $_SESSION['IID'];
+       if($IDD[0]=='S')
+       {
+         echo' <li><a href="Homepage_std.php">Home</a></li>';
+       }
+      else  if($IDD[0]=='L')
+       {
+         echo' <li><a href="Homepage_lib.php">Home</a></li>';
+       }
+       ?>
+         
           
-          <li class="drop-down"><a href="books.php">Books</a>
-            <ul>
-              <li><a href="#">Text Books</a>
-              
-              </li>
-              <li><a href="">Magazine</a></li>
-              <li><a href="">History Books</a></li>
-              
-            </ul>
-          </li> 
+        
           <li><a href="profilePage.php">Account</a></li>
           
-          <li><a href="StudentList.php">Students</a></li>
-          <li><a href="FacultyList.php">Faculties</a></li>
+       
           <li class="active"><a href="Suggestion.php">Suggestions</a></li>
-          <li><a href="RequestAppr.php">Approve Requests</a></li>
+       
           <li><a href="Report_at_Libr.php">Reports</a></li>
           
 
@@ -66,7 +73,7 @@
 <!------------Stuednt List Table-------------->
 
 <div class="container">
-  <h2>Suggestion Books For Students:</h2>
+  <h2>Suggestions For Students:</h2>
     
   <p>Type something in the input field to search the table:</p>  
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
@@ -168,7 +175,7 @@
         </div>
       </div>
     </div>
-
+    <?php ob_flush();  ?>
   
 </body>
 

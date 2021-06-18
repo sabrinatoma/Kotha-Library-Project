@@ -1,3 +1,8 @@
+<?php
+@ob_start();
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +70,16 @@
               <td class="text-center">
                 <button class="btn btn-danger remove"
                   type="button">Remove</button>
+                  
+            
                 </td>
+                <td class="text-center">
+                <button class="btn btn-danger remove"
+                  type="button">Submit</button>
+                  
+            
+                </td>
+              
               </tr>`);
       });
   
@@ -117,12 +131,12 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">Kotha</a></h1>
+      <h1 class="logo mr-auto"><a href="#">Kotha</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="Homepage_fac.php">Home</a></li>
           
-          <li class="drop-down"><a href="books.php">Books</a>
+         <!-- <li class="drop-down"><a href="books.php">Books</a>
             <ul>
               <li><a href="#">Text Books</a>
               
@@ -131,11 +145,11 @@
               <li><a href="">History Books</a></li>
               
             </ul>
-          </li> 
+          </li> -->
           <li><a href="profilePage.php">Account</a></li>
           <li class="active"><a href="GiveSugg.php">Recommand Books</a></li>
           <li><a href="Contact.php">Contact</a></li>
-          <li><a href="">Cart</a></li>
+          
           
 
         </ul>
@@ -216,7 +230,7 @@
       </div>
     </div>
 
-  
+    <?php ob_flush();  ?>
 </body>
 
 </html>

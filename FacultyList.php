@@ -1,3 +1,9 @@
+
+<?php
+@ob_start();
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +41,21 @@
       <h1 class="logo mr-auto"><a href="index.html">Kotha</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li><a href="index.html">Home</a></li>
+    <?php
+    
+        $IDD= $_SESSION['IID'];
+       if($IDD[0]=='F')
+       {
+        echo'<li><a href="Homepage_fac.php">Home</a></li>';
+       }
+       else if($IDD[0]=='L')
+       {
+        echo'<li><a href="Homepage_lib.php">Home</a></li>';
+       }
+       ?>
+        
           
-          <li class="drop-down"><a href="books.php">Books</a>
+         <!-- <li class="drop-down"><a href="books.php">Books</a>
             <ul>
               <li><a href="#">Text Books</a>
               
@@ -46,15 +64,18 @@
               <li><a href="">History Books</a></li>
               
             </ul>
-          </li> 
+          </li> -->
           <li><a href="profilePage.php">Account</a></li>
-          
-          <li><a href="StudentList.php">Students</a></li>
+          <li><a href="Contact.php">Contact</a></li>
+          <!--<li><a href="StudentList.php">Students</a></li>
           <li class="active"><a href="FacultyList.php">Faculties</a></li>
           <li><a href="Suggestion.php">Suggestions</a></li>
           <li><a href="">Approve Requests</a></li>
-          <li><a href="">Reports</a></li>
-          
+          <li><a href="">Reports</a></li>-->
+          <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" id="myInput" type="text" placeholder="Search.." aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="sear">Search</button>
+    </form>
 
         </ul>
       </nav><!-- nav-menu -->
@@ -65,11 +86,15 @@
 
 <!------------Stuednt List Table-------------->
 
-<div class="container">
-  <h2>List of Faculties who borrowed Books:</h2>
 
-  <p>Type something in the input field to search the table:</p>  
-  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+<br><br><br><br>
+
+<div class="container">
+ 
+
+  <!--<p>Type something in the input field to search the table:</p>  -->
+ 
+  <!--<input class="form-control" id="myInput" type="text" placeholder="Search..">-->
   <br>
               
   <table class="table table-striped">
@@ -80,7 +105,7 @@
         <th>Dept</th>
         <th>Email</th>
         <th>Designation</th>
-        <th>Pending Text Books</th>
+        
       </tr>
     </thead>
     <tbody id="myTable">
@@ -90,7 +115,7 @@
         <td>CSE</td>
         <td>john@gamil.com</td>
         <td>Lecturer</td>
-        <td>3</td>
+       
                 
       </tr>
       <tr>
@@ -99,7 +124,7 @@
         <td>CSE</td>
         <td>raiyan@yahoo.com</td>
         <td>Lecturer</td>
-        <td>2</td>        
+              
       </tr>
       
     </tbody>
@@ -161,7 +186,27 @@
       </div>
     </div>
 
+  <?php
+  if (isset($_POST['sear'])){ 
+    //$disi= $_POST['searchdao'];
+    //if(!is_null($disi))
+    
+      $IDD= $_SESSION['IID'];
+     
+        echo'<script>';
+        echo'function pageRedirect() {';
+            echo'window.location.replace("BorrowHistory.php");';
+        echo'}  ';    
+        echo'setTimeout("pageRedirect()", 100);';
+        echo'</script>';
+     
+
+    
+  }
   
+
+?>
+  <?php  ob_flush()  ?>
 </body>
 
 </html>

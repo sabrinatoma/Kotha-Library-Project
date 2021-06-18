@@ -1,3 +1,10 @@
+
+<?php
+@ob_start();
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +29,11 @@
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+
   <link href="CSSAll/TablesListCSS.css" rel="stylesheet">
 
-<!--------------------------------------------------------->
+
+  <!--------------------------------------------------------->
 
 <script>
   $(document).ready(function() {
@@ -44,12 +53,12 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">Kotha</a></h1>
+      <h1 class="logo mr-auto"><a href="#">Kotha</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="Homepage_lib.php">Home</a></li>
           
-          <li class="drop-down"><a href="books.php">Books</a>
+         <!-- <li class="drop-down"><a href="books.php">Books</a>
             <ul>
               <li><a href="#">Text Books</a>
               
@@ -58,12 +67,12 @@
               <li><a href="">History Books</a></li>
               
             </ul>
-          </li> 
+          </li> -->
           <li><a href="profilePage.php">Account</a></li>
           
-          <li><a href="StudentList.php">Students</a></li>
+          <!--<li><a href="StudentList.php">Students</a></li>
           <li><a href="FacultyList.php">Faculties</a></li>
-          <li><a href="Suggestion.php">Suggestions</a></li>
+          <li><a href="Suggestion.php">Suggestions</a></li>-->
           <li class="active"><a href="RequestAppr.php">Approve Requests</a></li>
           <li><a href="Report_at_Libr.php">Reports</a></li>
           
@@ -109,8 +118,8 @@
             <td>f_201914040</td>
             <td>Computer & Network Security</td>
             <td>Mr Thomson</td>  
-            <td><button type="button" class="btn btn-outline-success remove">Approve</button></td>
-            <td><button type="button" class="btn btn-outline-danger remove">Reject</button></td>   
+            <td><button type="button" class="btn btn-outline-success remove">Approve</button></td> 
+            <td><button type="button" class="btn btn-outline-danger remove">Reject</button></td>  
           </tr>
           <tr>            
             <td>Sabrina Afrin</td>
@@ -185,7 +194,7 @@
       </div>
     </div>
 
-  
+    <?php ob_flush();  ?>
 </body>
 
 </html>

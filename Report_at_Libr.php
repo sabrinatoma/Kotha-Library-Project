@@ -1,3 +1,9 @@
+<?php
+@ob_start();
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,8 +26,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
   <link href="CSSAll/Repot_at_LibrCSS.css" rel="stylesheet">
+
+  <!--------------------------------------------------------->
+
+<script>
+  $(document).ready(function() {
+  $("#myytable").on('click', '.remove', function () {
+    $(this).closest('tr').remove();
+});
+});
+</script>
+
 
   <!--======================================================== -->
 </head>
@@ -32,12 +50,12 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">Kotha</a></h1>
+      <h1 class="logo mr-auto"><a href="#">Kotha</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="Homepage_lib.php">Home</a></li>
           
-          <li class="drop-down"><a href="books.php">Books</a>
+         <!-- <li class="drop-down"><a href="books.php">Books</a>
             <ul>
               <li><a href="#">Text Books</a>
               
@@ -46,12 +64,12 @@
               <li><a href="">History Books</a></li>
               
             </ul>
-          </li> 
+          </li> -->
           <li><a href="profilePage.php">Account</a></li>
           
-          <li><a href="StudentList.php">Students</a></li>
+          <!--<li><a href="StudentList.php">Students</a></li>
           <li><a href="FacultyList.php">Faculties</a></li>
-          <li><a href="Suggestion.php">Suggestions</a></li>
+          <li><a href="Suggestion.php">Suggestions</a></li>-->
           <li><a href="RequestAppr.php">Approve Requests</a></li>
           <li class="active"><a href="Report_at_Libr.php">Reports</a></li>
           
@@ -146,7 +164,6 @@
     });
     </script>
 
-
 <script>
 $(document).ready(function () {
     // Find and remove selected table rows
@@ -161,6 +178,7 @@ $(document).ready(function () {
 </script>
 
 
+
             </div>
 
             <!-- Tab panes -->
@@ -169,7 +187,7 @@ $(document).ready(function () {
               <input class="form-control" id="myInput2" type="text" placeholder="Search..">
               <br>
               
-              <table class="table table-hover">
+              <table id="myytable" class="table table-hover">
     <thead>
       <tr>
         <th>ID</th>
@@ -187,7 +205,7 @@ $(document).ready(function () {
             <td>aliya@gmail.com</td>
             <td>Digital Logic Design</td>
             <td>Mr John</td>  
-            <td><button type="button" class="btn btn-outline-success">Collected</button></td> 
+            <td><button type="button" class="btn btn-outline-success remove">Collected</button></td> 
             </tr>
           <tr>            
             <td>Sazia Tabassum</td>
@@ -195,7 +213,7 @@ $(document).ready(function () {
             <td>sazia@gmail.com</td>
             <td>Computer & Network Security</td>
             <td>Mr Thomson</td>  
-            <td><button type="button" class="btn btn-outline-success">Collected</button></td>
+            <td><button type="button" class="btn btn-outline-success remove">Collected</button></td>
             </tr>
           <tr>            
             <td>Sabrina Afrin</td>
@@ -203,7 +221,7 @@ $(document).ready(function () {
             <td>afrin@gmail.com</td>
             <td>Digital Logic Design</td>
             <td>Mr John</td>  
-            <td><button type="button" class="btn btn-outline-success">Collected</button></td> 
+            <td><button type="button" class="btn btn-outline-success remove">Collected</button></td> 
             </tr>
           <tr>            
             <td>Abedur Rahman</td>
@@ -211,7 +229,7 @@ $(document).ready(function () {
             <td>abed@gmail.com</td>
             <td>Architectural Engineer's Solutions Suite</td>
             <td>hbsd efj</td>  
-            <td><button type="button" class="btn btn-outline-success">Collected</button></td> 
+            <td><button type="button" class="btn btn-outline-success remove">Collected</button></td> 
             </tr>
       
     </tbody>
@@ -279,7 +297,7 @@ $(document).ready(function () {
         </div>
       </div>
     </div>
-
+    <?php ob_flush();  ?>
   
 </body>
 

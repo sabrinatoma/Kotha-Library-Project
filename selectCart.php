@@ -1,4 +1,7 @@
-
+<?php
+@ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,10 +34,23 @@
     <header id="header" class="fixed-top">
       <div class="container d-flex align-items-center">
   
-        <h1 class="logo mr-auto"><a href="index.html">Kotha</a></h1>
+        <h1 class="logo mr-auto"><a href="#">Kotha</a></h1>
         <nav class="nav-menu d-none d-lg-block">
           <ul>
-            <li><a href="Homepage.php">Home</a></li>
+      <?php
+          $IDD= $_SESSION['IID'];
+       if($IDD[0]=='S')
+       {
+         echo '<li><a href="Homepage_std.php">Home</a></li>';
+       }
+       else if($IDD[0]=='F')
+       {
+         echo '<li><a href="Homepage_fac.php">Home</a></li>';
+       }
+       
+
+       ?>
+            
             
             <li class="drop-down"><a href="books.php">Books</a>
               <ul>
@@ -56,7 +72,7 @@
               </ul>
             </li> 
             <li><a href="profilePage.php">Account</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="Contact.php">Contact</a></li>
             <li class="active"><a href="selectCart.php">Cart</a></li>
             
             
@@ -99,7 +115,7 @@
 							</td>
 							
 							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>								
+								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true">Remove</i></button>								
 							</td>
 						</tr>
               
@@ -122,7 +138,7 @@
 							</td>
 							
 							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>								
+								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true">Remove</i></button>								
 							</td>
 						</tr>
 
@@ -145,7 +161,7 @@
 							</td>
 							
 							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>								
+								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true">Remove</i></button>								
 							</td>
 						</tr>
               
@@ -168,7 +184,7 @@
 							</td>
 							
 							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>								
+								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true">Remove</i></button>								
 							</td>
 						</tr>
 
@@ -180,7 +196,7 @@
 							
 						</tr>
 						<tr>
-							<td><a href="books.html" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Selecting Books</a></td>
+							<td><a href="books.php" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Selecting Books</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							
 							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
@@ -229,7 +245,7 @@
         </div>
       </div>
     </div>
-
+    <?php ob_flush();  ?>
   
 </body>
 

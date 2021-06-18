@@ -11,7 +11,7 @@ session_start();
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Kotha</title>
+  <title>Books</title>
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -230,19 +230,21 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>  	
+  <a href="#" class="buy-btn" name="sel">Select</a>  	
   </div>
   </div>
   <!--detail-box--------->
   <div class="detail-box">
   <!--type-------->
   <div class="type">
-  <h5>A programmer's Guide</h5>
-  <span> Dr. William M Springer</span>
-  <h5>B-Yt346</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
+  <?php
+  echo'<h5>A programmers Guide</h5>';
+  echo'<span> Dr. William M Springer</span>';
+  echo'<h5>B-Yt346</h5>';
+  echo'<div>';
+    echo'<h6>Available: 6</h6>';
+  echo'</div>';
+  ?>
   </div>
     
   </div>
@@ -259,7 +261,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -289,7 +291,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -318,7 +320,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -347,7 +349,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -376,14 +378,14 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
   <div class="detail-box">
   <!--type-------->
   <div class="type">
-  <h5>Architectural Engineer's Solutions Suite</h5>
+  <h5>Architectural Engineers Solutions Suite</h5>
   <span>Tyler Gregory Hicks</span>
   <h5>B-IJ65DS</h5>
   <div>
@@ -405,7 +407,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -434,7 +436,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -462,7 +464,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -491,7 +493,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -520,7 +522,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -551,7 +553,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -581,7 +583,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -614,7 +616,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -644,7 +646,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -674,7 +676,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -703,7 +705,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -732,7 +734,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->
@@ -765,7 +767,7 @@ session_start();
   <!--overlayer---------->
   <div class="overlay">
   <!--buy-btn------>	
-  <a href="#" class="buy-btn">Select</a>	
+  <a href="#" class="buy-btn" name="sel">Select</a>	
   </div>
   </div>
   <!--detail-box--------->

@@ -36,6 +36,8 @@ session_start();
                         <input type="text" class="input-box" placeholder="Your Dept"  required name="dept">
                         <input type="email" class="input-box" placeholder="Your Email Id"  required  name="mail">
                         <input type="password" class="input-box" placeholder="Password" required  name="pass">
+                        <input type="text" class="input-box" placeholder="Term"  name="lev">
+                        <input type="text" class="input-box" placeholder="Level"  name="term">
                         <input type="text" class="input-box" placeholder="Your Phone Number" required   name="phone">
                         <button type="submit" class="submit-btn"  name="butt">Submit</button>
                     </form> 
@@ -80,9 +82,11 @@ $usr_name = 'SYSTEM';
         $pass = $_POST['pass'];
         $phone = $_POST['phone'];
         $mail = $_POST['mail'];
+        $levv = $_POST['lev'];
+        $terrm = $_POST['term'];
         $command = 'insert into PERSON_TABLE';
-        $datas = ' values (' . "'".$id."'". "," . "'".$dept."'". ",". "'".$nam."'". ",". "'".$pass."'". "," .$phone. ",". "'".$mail."'".')';
-        echo $datas;
+        $datas = ' values (' . "'".$id."'". "," . "'".$dept."'". ",". "'".$nam."'". ",". "'".$levv."'". ",". "'".$terrm."'".",". "'".$pass."'". "," .$phone. ",". "'".$mail."'".')';
+        //echo $datas;
         $command.=$datas;
         $out = oci_parse($connect,$command);
         oci_execute($out);
@@ -109,7 +113,9 @@ $usr_name = 'SYSTEM';
                 $_SESSION['NNAME']=$row[2];
                 $_SESSION['DDEPT']=$row[1];
                 $_SESSION['IID']=$row[0];
-                $_SESSION['PPHONE']=$row[4];
+                $_SESSION['PPHONE']=$row[6];
+                $_SESSION['LLevel']=$row[3];
+                $_SESSION['TTerm']=$row[4];
                 $flag=1;break;
             }
           
@@ -117,15 +123,36 @@ $usr_name = 'SYSTEM';
         }
         if($flag==1)
         {
-            //$link_address1 = 'Homepage.php';
-            //echo "<a href='$link_address1'>Submit</a>";
-            echo'<script>';
-            echo'function pageRedirect() {';
-                echo'window.location.replace("Homepage.php");';
-            echo'}  ';    
-            echo'setTimeout("pageRedirect()", 100);';
+            $IDD= $_SESSION['IID'];
+       if($IDD[0]=='S')
+       {
+        echo'<script>';
+        echo'function pageRedirect() {';
+            echo'window.location.replace("Homepage_std.php");';
+        echo'}  ';    
+        echo'setTimeout("pageRedirect()", 100);';
         echo'</script>';
-            //echo'<a href="Homepage.php">Submit</a>';
+       }
+       else if($IDD[0]=='F')
+       {
+        echo'<script>';
+        echo'function pageRedirect() {';
+            echo'window.location.replace("Homepage_fac.php");';
+        echo'}  ';    
+        echo'setTimeout("pageRedirect()", 100);';
+        echo'</script>';
+       }
+       else
+       {
+        echo'<script>';
+        echo'function pageRedirect() {';
+            echo'window.location.replace("Homepage_lib.php");';
+        echo'}  ';    
+        echo'setTimeout("pageRedirect()", 100);';
+        echo'</script>';
+       }
+  
+    
         }
         else{
             

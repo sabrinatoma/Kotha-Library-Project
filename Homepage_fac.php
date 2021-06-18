@@ -1,3 +1,9 @@
+<?php
+@ob_start();
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,10 +42,10 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">Kotha</a></h1>
+      <h1 class="logo mr-auto"><a href="#">Kotha</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="Homepage_fac.php">Home</a></li>
           
           <li class="drop-down"><a href="books.php">Books</a>
             <ul>
@@ -51,8 +57,10 @@
               
             </ul>
           </li> 
+          <li><a href="FacultyList.php">Faculties</a></li>
           <li><a href="profilePage.php">Account</a></li>
-          <li><a href="">Contact</a></li>
+          <li><a href="Contact.php">Contact</a></li>
+          <li><a href="GiveSugg.php">Recommended_books</a></li>
           <li><a href="selectCart.php">Cart</a></li>
           
           
@@ -271,6 +279,8 @@
     </div>
 
   
+    <?php ob_flush();  ?>
+
 </body>
 
 </html>
