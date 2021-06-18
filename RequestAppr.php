@@ -20,8 +20,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
   <link href="CSSAll/TablesListCSS.css" rel="stylesheet">
+
+<!--------------------------------------------------------->
+
+<script>
+  $(document).ready(function() {
+  $("#myytable").on('click', '.remove', function () {
+    $(this).closest('tr').remove();
+});
+});
+</script>
+
 
   <!--======================================================== -->
 </head>
@@ -72,7 +84,7 @@
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
 
-  <table class="table table-striped">
+  <table id="myytable" class="table table-striped">
     <thead>
       <tr>
         <th>Name</th>
@@ -89,32 +101,32 @@
             <td>f_201914015</td>
             <td>Digital Logic Design</td>
             <td>Mr John</td>  
-            <td><button type="button" class="btn btn-outline-success">Approve</button></td> 
-            <td><button type="button" class="btn btn-outline-danger">Reject</button></td>  
+            <td><button type="button" class="btn btn-outline-success remove">Approve</button></td> 
+            <td><button type="button" class="btn btn-outline-danger remove">Reject</button></td>  
           </tr>
           <tr>            
             <td>Sazia Tabassum</td>
             <td>f_201914040</td>
             <td>Computer & Network Security</td>
             <td>Mr Thomson</td>  
-            <td><button type="button" class="btn btn-outline-success">Approve</button></td>
-            <td><button type="button" class="btn btn-outline-danger">Reject</button></td>   
+            <td><button type="button" class="btn btn-outline-success remove">Approve</button></td>
+            <td><button type="button" class="btn btn-outline-danger remove">Reject</button></td>   
           </tr>
           <tr>            
             <td>Sabrina Afrin</td>
             <td>s_201914055</td>
             <td>Digital Logic Design</td>
             <td>Mr John</td>  
-            <td><button type="button" class="btn btn-outline-success">Approve</button></td> 
-            <td><button type="button" class="btn btn-outline-danger">Reject</button></td>  
+            <td><button type="button" class="btn btn-outline-success remove">Approve</button></td> 
+            <td><button type="button" class="btn btn-outline-danger remove">Reject</button></td>  
           </tr>
           <tr>            
             <td>Abedur Rahman</td>
             <td>s_201914011</td>
             <td>Architectural Engineer's Solutions Suite</td>
             <td>hbsd efj</td>  
-            <td><button type="button" class="btn btn-outline-success">Approve</button></td> 
-            <td><button type="button" class="btn btn-outline-danger">Reject</button></td>  
+            <td><button type="button" class="btn btn-outline-success remove">Approve</button></td> 
+            <td><button type="button" class="btn btn-outline-danger remove">Reject</button></td>  
           </tr>
     </tbody>
   </table>

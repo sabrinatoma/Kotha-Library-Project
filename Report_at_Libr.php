@@ -89,6 +89,8 @@
                 <p>Search Librarian:</p>  
                 <input class="form-control" id="myInput" type="text" placeholder="Search..">
                 <br>
+                <td><button type="button" class="btn btn-outline-success remove">Solved</button></td>
+                <br>
 
                 <table class="table table-hover">
     <thead>
@@ -110,7 +112,7 @@
         <td>01928335652</td>
         <td>Page of Book missing.</td> 
         <td>There are 30 pages missing from the book Engineering Design.<br>I can't find the chapter I need to read!! </td>               
-        <td><button type="button" class="btn btn-outline-success">Solved</button></td>
+        <td><input type="checkbox" name="record"></td>
       </tr>
       <tr>
         <td>f_564546334</td>
@@ -119,7 +121,7 @@
         <td>01923635848</td>
         <td>Pages of Book is blank.</td> 
         <td>There are 4 pages are blank from the book Engineering Design.<br>The page numbers ar 289, 627, 183, 388. </td>                
-        <td><button type="button" class="btn btn-outline-success">Solved</button></td>              
+        <td><input type="checkbox" name="record"></td>              
       </tr>
       <tr>
         <td>s_564543234</td>
@@ -128,7 +130,7 @@
         <td>01928335652</td>
         <td>Page of Book missing.</td> 
         <td>There are 30 pages missing from the book Engineering Design.<br>I can't find the chapter I need to read!! </td>               
-        <td><button type="button" class="btn btn-outline-success">Solved</button></td>               
+        <td><input type="checkbox" name="record"></td>               
       </tr>
       
     </tbody>
@@ -143,6 +145,22 @@
       });
     });
     </script>
+
+
+<script>
+$(document).ready(function () {
+    // Find and remove selected table rows
+    $(".remove").click(function(){
+            $("table tbody").find('input[name="record"]').each(function(){
+            	if($(this).is(":checked")){
+                    $(this).parents("tr").remove();
+                }
+            });
+        });
+    });
+</script>
+
+
             </div>
 
             <!-- Tab panes -->

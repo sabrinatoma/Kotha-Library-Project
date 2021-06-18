@@ -154,7 +154,40 @@ body {
     }
   }
 
+/*--------------------------------------------------------------
+# Add book button
+--------------------------------------------------------------*/
+.btn-primary {
+  color: #fff;
+  background-color: #b79dcc;
+  border-color: #b79dcc;
+  margin-left: 90%;
+}
 
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #b79dcc;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn:hover
+{
+    background-color: #b066b3;
+    border-color: #c788c9;
+}
 
  /*--------------------------------------------------------------
 # Booklist Section
