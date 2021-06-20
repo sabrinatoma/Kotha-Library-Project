@@ -208,39 +208,39 @@ session_start();
 <!-- ======= Footer ======= -->
 <footer id="footer">
 
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
+<div class="footer-top">
+  <div class="container">
+    <div class="row">
 
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Contact</h3>
-            <p>
-              378 Sugar Camp Road,<br>
-              Mirpur Cantonment,<br>
-              Dhaka. <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> bookishcloud@gmail.com<br>
-            </p>
-          </div>
+      <div class="col-lg-3 col-md-6 footer-contact">
+        <h3>Contact</h3>
+        <p>
+          MK University<br>
+          Mirpur Cantonment,<br>
+          Dhaka. <br><br>
+          <strong>Phone:</strong> +1 5589 55488 55<br>
+          <strong>Email:</strong> kothalibrary@gmail.com<br>
+        </p>
+      </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="profilePage.html">Account</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="">All the books</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="">Send us massage</a></li>
-            </ul>
-          </div>
+      <div class="col-lg-2 col-md-6 footer-links">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><i class="bx bx-chevron-right"></i> <a href="">Home</a></li>
+          
+          <li><i class="bx bx-chevron-right"></i> <a href="">All the books</a></li>
+          <li><i class="bx bx-chevron-right"></i> <a href="">Send us massage</a></li>
+        </ul>
+      </div>
 
 
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Wanna get notification about new books?</h4>
-            <p>Subscribe to out site..</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
+      <div class="col-lg-4 col-md-6 footer-newsletter">
+        <h4>Wanna get notification about new books?</h4>
+        <p>Stay Conected..</p>
+        <form action="" method="post">
+          <input type="email" name="email"><input type="submit" value="Click Here!">
+        </form>
+      </div>
 
         </div>
       </div>

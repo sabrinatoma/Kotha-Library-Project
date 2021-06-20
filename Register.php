@@ -60,8 +60,8 @@ session_start();
 
 <?php
  //session_start();
-$usr_name = 'SYSTEM';
-    $pass = '123ORacle';
+$usr_name = 'DMBS1';
+    $pass = '12345';
 
     $connectionString = 'localhost/xe';
 
@@ -85,7 +85,7 @@ $usr_name = 'SYSTEM';
         $levv = $_POST['lev'];
         $terrm = $_POST['term'];
         $command = 'insert into PERSON_TABLE';
-        $datas = ' values (' . "'".$id."'". "," . "'".$dept."'". ",". "'".$nam."'". ",". "'".$levv."'". ",". "'".$terrm."'".",". "'".$pass."'". "," .$phone. ",". "'".$mail."'".')';
+        $datas = ' values (' . "'".$id."'". "," . "'".$dept."'". ",". "'".$nam."'". ",". "'".$pass."'". "," .$phone. ",". "'".$mail."'".",".$terrm. ",".$levv.')';
         //echo $datas;
         $command.=$datas;
         $out = oci_parse($connect,$command);

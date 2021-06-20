@@ -29,98 +29,7 @@ session_start();
 
   <link href="CSSAll/ContactCSS.css" rel="stylesheet">
 
-  <!------------------Add row script-------------->
-  <!---------------------------------------------->
-  <script>
-    $(document).ready(function () {
   
-      // Denotes total number of rows
-      var rowIdx = 0;
-  
-      // jQuery button click event to add a row
-      $('#addBtn').on('click', function () {
-  
-        // Adding a row inside the tbody.
-        $('#tbody').append(`<tr id="R${++rowIdx}">
-             <td class="row-index text-center">
-             <input type="Text" placeholder="BookName">
-             </td>
-             <td class="row-index text-center">
-             <input type="Text" placeholder="AuthorName">
-             </td>
-             <td class="row-index text-center">
-             <input type="Text" placeholder="For which Level">
-             </td>
-             <td class="row-index text-center">
-             <input type="Text" placeholder="For which Term">
-             </td>
-             <td class="row-index text-center">
-             <input type="Text" placeholder="Course ID">
-             </td>
-             <td class="row-index text-center">
-             <label class="container">
-                <input type="radio" checked="checked" name="radio">Text
-                  <span class="checkmark"></span>
-            </label>
-            <label class="container">
-                <input type="radio" name="radio">Reference
-                <span class="checkmark"></span>
-            </label>
-             </td>
-              <td class="text-center">
-                <button class="btn btn-danger remove"
-                  type="button">Remove</button>
-                  
-            
-                </td>
-                <td class="text-center">
-                <button class="btn btn-danger remove"
-                  type="button">Submit</button>
-                  
-            
-                </td>
-              
-              </tr>`);
-      });
-  
-      // jQuery button click event to remove a row.
-      $('#tbody').on('click', '.remove', function () {
-  
-        // Getting all the rows next to the row
-        // containing the clicked button
-        var child = $(this).closest('tr').nextAll();
-  
-        // Iterating across all the rows 
-        // obtained to change the index
-        child.each(function () {
-  
-          // Getting <tr> id.
-          var id = $(this).attr('id');
-  
-          // Getting the <p> inside the .row-index class.
-          var idx = $(this).children('.row-index').children('p');
-  
-          // Gets the row number from <tr> id.
-          var dig = parseInt(id.substring(1));
-  
-          // Modifying row index.
-          idx.html(`Row ${dig - 1}`);
-  
-          // Modifying row id.
-          $(this).attr('id', `R${dig - 1}`);
-        });
-  
-        // Removing the current row.
-        $(this).closest('tr').remove();
-  
-        // Decreasing total number of rows by 1.
-        rowIdx--;
-      });
-    });
-  </script>
-
-
-
 
   <!--======================================================== -->
 </head>
@@ -161,33 +70,159 @@ session_start();
 
 <!------------Stuednt List Table-------------->
 <div class="container">
-  <h2>Recommend Books For Students.</h2><br>
+  <h2>Recommend Books For Students.</h2><br><br>
 
-  <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th class="text-center">Book Name</th>
-            <th class="text-center">Author Name</th>
-            <th class="text-center" id="lev">For Level</th>
-            <th class="text-center" id="ter">For Term</th>
-            <th class="text-center" id="cid">Course ID</th>
-            <th class="text-center">Type</th>
-            <th class="text-center">..</th>
-          </tr>
-        </thead>
-        <tbody id="tbody">
+
+                <form action="GiveSugg.php" method="POST">
+                <div class="form-row">
+                        <div class="col">
+                            <input type="text" name="fcname" class="form-control" id="fcname" placeholder="Faculty Name">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="fcid" class="form-control" id="fcid" placeholder="Faculty ID">
+                        </div>
+                        <br><br>
+                      </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" name="bkname" class="form-control" id="bkname" placeholder="Book Name">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="Aname" class="form-control" id="Aname" placeholder="Author Name">
+                        </div>
+                        <br><br>
+                      </div>
+                      <div class="form-row">
+                        <div class="col">
+                            <input type="text" name="flvl" class="form-control" id="flvl" placeholder="For Level">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="ftrm" class="form-control" id="ftrm" placeholder="For Term">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="crsID" class="form-control" id="crsID" placeholder="Course ID">
+                        </div>
+                      </div>
+                      <br>                        
+                        <div>
+                        <label class="container">
+                            <input type="radio" checked="checked" name="radio" value="TextBook">Text
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="radio" value="ReferenceBook">Reference
+                            <span class="checkmark"></span>
+                        </label>
+                        </div>
+                        <br>
+                    
+                    <br><button type="submit" name="SubSugg" class="btn btn-primary">Submit</button>
+                    <br><br>
+                </form>
+                
+
+<?php
+//Give Suggestion form
+$usr_name = 'DMBS1';
+    $pass = '12345';
+
+    $connectionString = 'localhost/xe';
+
+    $connect = oci_connect($usr_name,$pass,$connectionString);
+    
+    if(isset($_POST['SubSugg']))
+    { 
+      $fcname = $_POST['fcname'];
+      $fcid = $_POST['fcid'];
+      $bkname = $_POST['bkname'];
+      $Aname = $_POST['Aname'];
+      $flvl = $_POST['flvl'];
+      $ftrm = $_POST['ftrm'];
+      $crsID = $_POST['crsID'];
+      $radio = $_POST['radio'];
+      
+      $command = 'insert into GIVESUGGESTION';
+      $datas = ' values ('. "'".$fcname."'". ",". "'".$fcid."'". "," . "'".$bkname."'". "," . "'".$Aname."'". ",". "'".$flvl."'". ",". "'".$ftrm."'". ",". "'".$crsID."'". ",". "'".$radio."'".')';
+      //echo $datas;
+      $command.=$datas;
+      $out = oci_parse($connect,$command);
+      $res = oci_execute($out);
+
+      error_reporting(0);
+
+      $i=0;
+      while($row=oci_fetch_array($out,OCI_ASSOC+OCI_RETURN_NULLS)) {
+      ?>
+        <tr>
+          <td><?php echo $row["fcname"]; ?></td>
+          <td><?php echo $row["fcid"]; ?></td>
+          <td><?php echo $row["bkname"]; ?></td>
+          <td><?php echo $row["Aname"]; ?></td>
+          <td><?php echo $row["flvl"]; ?></td>
+          <td><?php echo $row["ftrm"]; ?></td>
+          <td><?php echo $row["crsID"]; ?></td>
+          <td><?php echo $row["radio"]; ?></td>
+        </tr>
+      <?php
+      $i++;
+      }
+    }
+?>
+
+
+<div>
+              <p>Search:</p>  
+              <input class="form-control" id="myInput2" type="text" placeholder="Search..">
+              <br>
+              <?php
+              echo '<table id="myytable" class="table table-hover">'
+              ?>
+              
+    <?php echo '<thead>
+      <tr>
+        <th>Faculty Name</th>
+        <th>Faculty ID</th>
+        <th>Book Name</th>
+        <th>Author Name</th>
+        <th>For Level</th>
+        <th>For Term</th>
+        <th>Course ID</th>
+        <th>Type</th>
+      </tr>
+    </thead>'?>
+
+<?php
+$show_table = 'select * from GIVESUGGESTION';
+$out = oci_parse($connect,$show_table);
+oci_execute($out);
+
+while ($row = oci_fetch_array($out, OCI_RETURN_NULLS+OCI_ASSOC)) {
+  echo '<tr>';
+  foreach ($row as $item) {
+      echo '<td>'.($item !== null ? htmlentities($item, ENT_QUOTES) : '&nbsp').'</td>';
+             
+  }
   
-        </tbody>
-      </table>
-    </div>
-    <button class="btn btn-md btn-primary" 
-      id="addBtn" type="button">
-        Add new Row
-    </button>
-    <br><br>
-  
-</div>
+  echo '</tr>';
+}
+
+?>
+
+<?php echo '</table>' ?>
+
+</div></div>
+
+<!------------------search------------>
+<script>
+    $(document).ready(function(){
+      $("#myInput2").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myytable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -199,30 +234,30 @@ session_start();
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Contact</h3>
             <p>
-              378 Sugar Camp Road,<br>
+              MK University<br>
               Mirpur Cantonment,<br>
               Dhaka. <br><br>
               <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> bookishcloud@gmail.com<br>
+              <strong>Email:</strong> kothalibrary@gmail.com<br>
             </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="about.html">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="books.html">All the books</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="contact.html">Send us massage</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="">Home</a></li>
+              
+              <li><i class="bx bx-chevron-right"></i> <a href="">All the books</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="">Send us massage</a></li>
             </ul>
           </div>
 
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Wanna get notification about new books?</h4>
-            <p>Subscribe to out site..</p>
+            <p>Stay Conected..</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+              <input type="email" name="email"><input type="submit" value="Click Here!">
             </form>
           </div>
 

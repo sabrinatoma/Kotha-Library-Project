@@ -71,67 +71,72 @@ session_start();
 
 
 <!------------Stuednt List Table-------------->
+<?php
+$usr_name = 'DMBS1';
+    $pass = '12345';
+
+    $connectionString = 'localhost/xe';
+
+    $connect = oci_connect($usr_name,$pass,$connectionString);
+
+?>
 
 <div class="container">
   <h2>Suggestions For Students:</h2>
     
-  <p>Type something in the input field to search the table:</p>  
-  <input class="form-control" id="myInput" type="text" placeholder="Search..">
-  <br>
-
-  <table class="table table-striped">
-    <thead>
+  <div>
+              <p>Search:</p>  
+              <input class="form-control" id="myInput2" type="text" placeholder="Search..">
+              <br>
+              <?php
+              echo '<table id="myytable" class="table table-hover">'
+              ?>
+              
+    <?php echo '<thead>
       <tr>
-        <th>Faculty ID</th>
         <th>Faculty Name</th>
-        <th>Dept</th>
-        <th>Level</th>
-        <th>Term</th>
-        <th>Course Code</th>
+        <th>Faculty ID</th>
         <th>Book Name</th>
         <th>Author Name</th>
-        <th style="width:15%">...</th>
+        <th>For Level</th>
+        <th>For Term</th>
+        <th>Course ID</th>
+        <th>Type</th>
       </tr>
-    </thead>
-    <tbody id="myTable">
-        <tr>
-            <td>f_201914040</td>
-            <td>Sazia Tabassum</td>
-            <td>CSE</td>
-            <td>2</td>
-            <td>1</td>
-            <td>201</td>
-            <td>Digital Logic Design</td>
-            <td>Mr John</td>  
-            <td>TextBook</td>   
-          </tr>
-          <tr>
-            <td>f_201914039</td>
-            <td>Raiyan Jahangir</td>
-            <td>ME</td>
-            <td>2</td>
-            <td>2</td>
-            <td>263</td>
-            <td>Thermal Energy</td>  
-            <td>Md Kamal</td> 
-            <td>ReferenceBook</td>      
-          </tr>
-    </tbody>
-  </table>
-</div>
+    </thead>'?>
 
+<?php
+$show_table = 'select * from GIVESUGGESTION';
+$out = oci_parse($connect,$show_table);
+oci_execute($out);
+
+while ($row = oci_fetch_array($out, OCI_RETURN_NULLS+OCI_ASSOC)) {
+  echo '<tr>';
+  foreach ($row as $item) {
+      echo '<td>'.($item !== null ? htmlentities($item, ENT_QUOTES) : '&nbsp').'</td>';
+             
+  }
+  
+  echo '</tr>';
+}
+
+?>
+
+<?php echo '</table>' ?>
+
+</div></div>
+
+<!------------------search------------>
 <script>
     $(document).ready(function(){
-      $("#myInput").on("keyup", function() {
+      $("#myInput2").on("keyup", function() {
         var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
+        $("#myytable tr").filter(function() {
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
     });
     </script>
-
-
 
 
 
@@ -145,30 +150,30 @@ session_start();
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Contact</h3>
             <p>
-              378 Sugar Camp Road,<br>
+              MK University<br>
               Mirpur Cantonment,<br>
               Dhaka. <br><br>
               <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> bookishcloud@gmail.com<br>
+              <strong>Email:</strong> kothalibrary@gmail.com<br>
             </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="about.html">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="books.html">All the books</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="contact.html">Send us massage</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="">Home</a></li>
+              
+              <li><i class="bx bx-chevron-right"></i> <a href="">All the books</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="">Send us massage</a></li>
             </ul>
           </div>
 
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Wanna get notification about new books?</h4>
-            <p>Subscribe to out site..</p>
+            <p>Stay Conected..</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+              <input type="email" name="email"><input type="submit" value="Click Here!">
             </form>
           </div>
 
