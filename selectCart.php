@@ -116,6 +116,7 @@ if(isset($_POST['borrow'])){
         <div class="col-md-7">
             <div class="shopping-cart">
                 <h6>My Cart</h6>
+                <br><br><br><br>
                 <hr>
 
                 <?php
@@ -124,8 +125,8 @@ if(isset($_POST['borrow'])){
                     if (isset($_SESSION['cart'])){
                         $product_id = array_column($_SESSION['cart'], 'product_id');
 
-                        $usr_name = 'SYSTEM';
-                        $pass = '123ORacle';
+                        $usr_name = 'DMBS1';
+                        $pass = '12345';
                         $connectionString = 'localhost/xe';
                         $connect = oci_connect($usr_name,$pass,$connectionString);
 

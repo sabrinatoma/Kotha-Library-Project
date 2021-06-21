@@ -65,7 +65,7 @@ session_start();
             </ul>
           </li> 
           <li class="active"><a href="profilePage.php">Account</a></li>
-          <li><a href="">Contact</a></li>
+          
           <li><a href="selectCart.php">Cart</a></li>
           
 

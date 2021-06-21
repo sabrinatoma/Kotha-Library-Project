@@ -172,7 +172,7 @@ while ($row = oci_fetch_array($out, OCI_RETURN_NULLS+OCI_ASSOC)) {
   Remove</a></button></td></tr>
 
 
-
+<?php
 
 
 }
@@ -346,11 +346,7 @@ $(document).ready(function()
 
 
 
-<?php
 
-
-}
-?>
 
 
 

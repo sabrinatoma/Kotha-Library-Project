@@ -59,7 +59,7 @@ session_start();
           <li><a href="StudentList.php">Students</a></li>
           <li><a href="FacultyList.php">Faculties</a></li>
           <li><a href="Suggestion.php">Suggestions</a></li>
-          <li><a href="RequestAppr.php">Requests</a></li>
+          <li><a href="RequestAppr.php">Approve Requests</a></li>
           <li><a href="Report_at_Libr.php">Reports</a></li>
           
           

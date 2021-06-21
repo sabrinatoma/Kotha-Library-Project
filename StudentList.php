@@ -103,7 +103,7 @@ session_start();
     if (!$connect){
         echo '<p>Could not Connect!</p>';
     }
-    $show_table = "select ID \"ID\", DEPT \"Department\", NAME \"Name\", PHONE \"Phone No.\", EMAIL \"Email ID\" from PERSON_TABLE where id like 'S%'";
+    $show_table = "select ID \"ID\", DEPT \"Department\", NAME \"Name\", PHONE_NUM \"Phone No.\", EMAIL \"Email ID\" from PERSON_TABLE where id like 'S%'";
       $out = oci_parse($connect,$show_table);
       oci_execute($out);
       print "<table class = \"table table-responsive-md    table-striped table-dark table-hover id=\"myTable\"\">\n";

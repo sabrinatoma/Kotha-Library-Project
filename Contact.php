@@ -103,13 +103,13 @@ session_start();
                 <form action="Contact.php" method="POST">
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" name="Pname" class="form-control" id="name" placeholder="Enter Your Name" name="name">
+                            <input disabled type="text" name="Pname" class="form-control" value=<?php echo '"'.$_SESSION["NNAME"].'"'?> id="name" placeholder="Enter Your Name" name="name">
                         </div>
                         <div class="col">
-                            <input type="text" name="Pid" class="form-control" id="id" placeholder="Enter Your ID" name="id">
+                            <input disabled type="text" name="Pid" class="form-control" value=<?php echo '"'.$_SESSION["IID"].'"'?> id="id" placeholder="Enter Your ID" name="id">
                         </div>
                         <br><br>
-                            <input type="text" name="Pemail" class="form-control" id="topic" placeholder="Enter Your Email" name="topic">
+                            <input disabled type="text" name="Pemail" class="form-control" value=<?php echo '"'.$_SESSION["Mail_ID"].'"'?> id="topic" placeholder="Enter Your Email" name="topic">
                         <br><br>
                             <input type="text" name="topic" class="form-control" id="topic" placeholder="What its about?" name="topic">
                         <br>
@@ -182,13 +182,13 @@ session_start();
 <form action="Contact.php" method="POST">
     <div class="form-row">
         <div class="col">
-            <input type="text" name="Prname" class="form-control" id="name" placeholder="Enter Your Name">
+            <input disabled type="text" name="Prname" value=<?php echo '"'.$_SESSION["NNAME"].'"'?> class="form-control" id="name" placeholder="Enter Your Name">
         </div>
         <div class="col"><!--ekhaner Prid Report_at_libr te niye row delete korte hobe-->
-            <input type="text" name="Prid" class="form-control" id="id" placeholder="Enter Your ID">
+            <input disabled type="text" name="Prid" value=<?php echo '"'.$_SESSION["IID"].'"'?> class="form-control" id="id" placeholder="Enter Your ID">
         </div>
             <br><br>
-            <input type="text" name="Premail" class="form-control" id="email" placeholder="Enter your Email">
+            <input disabled type="text" name="Premail" value=<?php echo '"'.$_SESSION["Mail_ID"].'"'?> class="form-control" id="email" placeholder="Enter your Email">
             <br><br>          
             <input type="text" name="bkname" class="form-control" id="Bookname" placeholder="Name of the Book">
             <br><br>
@@ -272,9 +272,9 @@ session_start();
     $connect1 = oci_connect($usr_name1,$pass1,$connectionString1);
     if(isset($_POST['saave']))
     { 
-      $Prname = $_POST['Prname'];
-      $Prid = $_POST['Prid'];
-      $Premail = $_POST['Premail'];
+      $Prname = $_SESSION["NNAME"];
+      $Prid = $_SESSION["IID"];
+      $Premail = $_SESSION["Mail_ID"];
       $bkname = $_POST['bkname'];
       $arname = $_POST['arname'];
       $_SESSION['Pr_ID']=$Prid;
@@ -315,9 +315,11 @@ $usr_name = 'DMBS1';
     
     if(isset($_POST['save']))
     { 
-      $Pname = $_POST['Pname'];
-      $Pid = $_POST['Pid'];
-      $Pemail = $_POST['Pemail'];
+      $Pname = $_SESSION["NNAME"];
+      //echo $Pname;
+      $Pid = $_SESSION["IID"];
+      $Pemail = $_SESSION["Mail_ID"];
+
       $topic = $_POST['topic'];
       $reportmsg = $_POST['reportmsg'];
 
@@ -325,6 +327,7 @@ $usr_name = 'DMBS1';
       $datas = ' values (' . "'".$Pname."'". "," . "'".$Pid."'". ",". "'".$Pemail."'". ",". "'".$topic."'". ",". "'".$reportmsg."'".')';
       //echo $datas;
       $command.=$datas;
+      echo $command;
       $out = oci_parse($connect,$command);
       $res = oci_execute($out);
 

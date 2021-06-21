@@ -213,8 +213,8 @@ if(isset($_POST['add'])){
     <div class="row text-cenetr py-5">
             <?php
        
-            $usr_name = 'SYSTEM';
-            $pass = '123ORacle';
+            $usr_name = 'DMBS1';
+            $pass = '12345';
         
             $connectionString = 'localhost/xe';
         

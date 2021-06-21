@@ -33,7 +33,7 @@ session_start();
                     <form action = "Register.php" method = "post">
                         <input type="text" class="input-box" placeholder="Your Name" required  name="nam">
                         <input type="text" class="input-box" placeholder="Your  Id"  required name="id">
-                        <input type="text" class="input-box" placeholder="Your Dept"  required name="dept">
+                        <input type="text" class="input-box" placeholder="Your Dept"   name="dept">
                         <input type="email" class="input-box" placeholder="Your Email Id"  required  name="mail">
                         <input type="password" class="input-box" placeholder="Password" required  name="pass">
                         <input type="text" class="input-box" placeholder="Term"  name="lev">
@@ -60,8 +60,8 @@ session_start();
 
 <?php
  //session_start();
-$usr_name = 'SYSTEM';
-    $pass = '123ORacle';
+$usr_name = 'DMBS1';
+    $pass = '12345';
 
     $connectionString = 'localhost/xe';
 
