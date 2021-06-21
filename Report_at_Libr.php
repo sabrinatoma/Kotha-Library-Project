@@ -127,8 +127,8 @@ $connect1 = oci_connect($usr_name1,$pass1,$connectionString1);
                 
     <?php echo '<thead>
       <tr>
-        <th>ID</th>
         <th>Name</th>
+        <th>ID</th>
         <th>Email</th>
         <th>Topic</th>
         <th>Report</th>
@@ -142,14 +142,39 @@ $out = oci_parse($connect1,$show_table);
 oci_execute($out);
 
 while ($row = oci_fetch_array($out, OCI_RETURN_NULLS+OCI_ASSOC)) {
-  echo '<tr>';
+  /*echo '<tr>';
   foreach ($row as $item) {
       echo '<td>'.($item !== null ? htmlentities($item, ENT_QUOTES) : '&nbsp').'</td>';
              
   }
-  
-  echo '<td><input type="checkbox" name="record"></td>';
+  echo '<td><button type="button" name="collected" class="btn btn-outline-success remove">Collected</button></td>';
+  //echo '<td><input type="checkbox" name="record"></td>';
   echo '</tr>';
+  */
+
+  echo "
+  <tr>
+  <td>".$row['NAME']."</td>
+  <td>".$row['ID']."</td>
+  <td>".$row['EMAIL']."</td>
+  <td>".$row['TOPIC']."</td>
+  <td>".$row['REPORT_MASSAGE']."</td>
+  
+  
+  ";?>
+  
+  <td><button type="button" name="collected" class="btn">
+  <a href="email.php?em=<?php echo $row['EMAIL']; ?>" onclick='return checkemail()'>
+  Solved</a></button></td>
+  
+  <td><button type="button" name="collected" class="btn btn-outline-danger">
+  <a href="delete.php?bn=<?php echo $row['BOOK_NAME']; ?>" onclick='return checkdelete()'>
+  Remove</a></button></td></tr>
+
+
+
+
+
 }
 
 ?>
@@ -192,14 +217,14 @@ $(document).ready(function () {
               <input class="form-control" id="myInput2" type="text" placeholder="Search..">
               <br>
               <?php
-              echo '<table id="myytable" class="table table-hover">'
+              echo '<table id="myytable" method="POST" class="table table-hover">'
               ?>
               
     <?php echo '<thead>
       <tr>
-        <th>ID</th>
         <th>Name</th>
-        <th>Email</th>
+        <th>ID</th>
+        <th name="person_email">Email</th>
         <th>Book Name</th>
         <th>Author Name</th>
         <th>..</th>
@@ -211,7 +236,11 @@ $show_table = 'select * from Requst_book';
 $out = oci_parse($connect1,$show_table);
 oci_execute($out);
 
-while ($row = oci_fetch_array($out, OCI_RETURN_NULLS+OCI_ASSOC)) {
+$e_mail= '';
+$b_name = '';
+
+while ($row = oci_fetch_array($out, OCI_RETURN_NULLS+OCI_ASSOC)) { 
+  /*<!--
   echo '<tr>';
   foreach ($row as $item) {
       echo '<td>'.($item !== null ? htmlentities($item, ENT_QUOTES) : '&nbsp').'</td>';
@@ -219,29 +248,138 @@ while ($row = oci_fetch_array($out, OCI_RETURN_NULLS+OCI_ASSOC)) {
   }
   
   echo '<td><button type="button" name="collected" class="btn btn-outline-success remove">Collected</button></td>';
-  echo '</tr>';
-}
+  echo '</tr>';     -->*/
 
+
+
+echo "
+<tr>
+<td>".$row['NAME']."</td>
+<td>".$row['ID']."</td>
+<td>".$row['EMAIL']."</td>
+<td>".$row['BOOK_NAME']."</td>
+<td>".$row['AUTHOR_NAME']."</td>
+
+
+";?>
+
+<td><button type="button" name="collected" class="btn">
+<a href="email.php?em=<?php echo $row['EMAIL']; ?>" onclick='return checkemail()'>
+Collected</a></button></td>
+
+<td><button type="button" name="collected" class="btn btn-outline-danger">
+<a href="delete.php?bn=<?php echo $row['BOOK_NAME']; ?>" onclick='return checkdelete()'>
+Remove</a></button></td></tr>
+
+<?php //echo '<td><a href="delete.php?Prid=$row[ID]">Collected</a></td>
+//echo '<td><button type="button" name="collected" class="btn btn-outline-success deletebtn">Collected</button></a></td></tr>';
+
+//echo '<td><button type="submit" name="collected" class="btn btn-outline-success deletebtn">Collected</button></td></tr>';
+
+}
 ?>
+
 
 <?php echo '</table>' ?>
 
-<!--row delete hoynai-->
+
+
+
+<!-----------row deletion script------------>
+<!--
+<script>
+$(document).ready(function()
+{
+  $('.deletebtn').on('click', function()
+  {
+    $('#deletemodal').modal('show');
+
+    $tr = $(this).closest('tr');
+
+    var data = $tr.children("td").map(function(){
+      return $(this).text();
+    }).get();
+
+    console.log(data);
+
+    $('#delete_id').val(data[0]);
+
+  })
+})
+
+</script> -->
+
+<!-----------row deletion modal------------>
+
+ <!--
+<div class="modal" id="deletemodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header 
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Data</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body 
+      <form action="delete.php" method="POST">
+
+      <div class="modal-body">
+        <input type="hidden" name="delete_id" id="delete_id">
+        <h5>Are you sure you want to delete this Data?</h5>
+      </div>
+
+      <!-- Modal footer 
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" name="deletedata" class="btn btn-danger">Delete</a></button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+-->
+
+<!-----------row deletion modal end------------>
+
+
+
+
 <?php
 
-if(isset($_POST['collected']))
-{
-  //include "Contact.php";
-  $idd = $row["Prid"];
-  $id = $_GET['idd'];
-  echo $id;
-  $query = "delete from requst_book where ID='id'";
-  $run = oci_parse($connect1,$query);
-  oci_execute($run);
-}
 
+}
 ?>
-<!--row delete hoynai-->
+
+
+
+
+<script>
+function checkemail()
+{
+  alert('Are you sure about sending Email?');
+  //window.location = 'email.php';
+}
+</script>
+
+<script>
+function checkdelete()
+{
+  //alert('Are you sure about removing this data?');
+  //window.location = 'email.php';
+  
+}
+</script>
+
+
+
+
+  
+
+<!-----------row deletion script end------------>
+
+
 
   
 </div>          
@@ -265,6 +403,12 @@ if(isset($_POST['collected']))
 </div>
 
 
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
   <!-- ======= Footer ======= -->
@@ -312,6 +456,4 @@ if(isset($_POST['collected']))
 </body>
 
 </html>
-
-
 

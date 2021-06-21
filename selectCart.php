@@ -1,6 +1,32 @@
 <?php
+
 @ob_start();
 session_start();
+
+
+require_once ("component1.php");
+
+//$db = new CreateDb("Productdb", "Producttb");
+
+if (isset($_POST['remove'])){
+  if ($_GET['action'] == 'remove'){
+      foreach ($_SESSION['cart'] as $key => $value){
+          if($value["product_id"] == $_GET['id']){
+              unset($_SESSION['cart'][$key]);
+              echo "<script>alert('Product has been Removed...!')</script>";
+              echo "<script>window.location = 'selectCart.php'</script>";
+          }
+      }
+  }
+}
+if(isset($_POST['borrow'])){
+  if ($_GET['action1'] == 'borrow'){
+   echo $value["product_id"];
+  }
+  
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +44,7 @@ session_start();
   
 
   <link href="CSSAll/selectCartCSS.css" rel="stylesheet">
-
+<link href="style.css" rel="stylesheet">
   <link href="CSSAll/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="JSAll/bootstrap.min.js"></script>
 <script src="JSAll/jquery-1.11.1.min.js"></script>
@@ -83,168 +109,105 @@ session_start();
       </div>
     </header><!-- End Header -->
   
+  
 
+<div class="container-fluid">
+    <div class="row px-5">
+        <div class="col-md-7">
+            <div class="shopping-cart">
+                <h6>My Cart</h6>
+                <hr>
 
-<div class="Ccontainer">
-    <h5>Find your selected books here</h5><br><br>
-	<table id="cart" class="table table-hover table-condensed">
-    				<thead>
-						<tr>
-							<th style="width:50%">Books</th>
+                <?php
 
-              <th style="width:15%;">Barcode</th>
-							<th style="width:10%"></th>
-						</tr>
-					</thead>
-					<tbody>
-            <!-------------->
-						<tr>
-							<td data-th="Product">
-								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="./IMAGES/Computer & Network Security.jpg"/></div>
-									<div class="col-sm-10">
-										<h4 class="nomargin">Computer & Network Security</h4>
-                                        <span>Author</span>
-										</div>
-								</div>
-							</td>
-						
+                $total = 0;
+                    if (isset($_SESSION['cart'])){
+                        $product_id = array_column($_SESSION['cart'], 'product_id');
 
-              <td data-th="Barcode">
-								<p>301140000238</p>
-							</td>
-							
-							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true">Remove</i></button>								
-							</td>
-						</tr>
-              
-            <!-------------->
-              <tr>
-							<td data-th="Product">
-								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="./IMAGES/A programmer's Guide.jpg"/></div>
-									<div class="col-sm-10">
-										<h4 class="nomargin">A programmer's Guide</h4>
-                                        <span>Author</span>
-										</div>
-								</div>
-							</td>
-							
-							
+                        $usr_name = 'SYSTEM';
+                        $pass = '123ORacle';
+                        $connectionString = 'localhost/xe';
+                        $connect = oci_connect($usr_name,$pass,$connectionString);
 
-              <td data-th="Barcode">
-								<p>301140000238</p>
-							</td>
-							
-							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true">Remove</i></button>								
-							</td>
-						</tr>
+                        $show_table = 'select * from BookList';
+                        $out = oci_parse($connect,$show_table);
+                        oci_execute($out);
+                        //while ($row = oci_fetch_assoc($result)){
+                            while (($row = oci_fetch_array($out, OCI_NUM)) ) {
+                            foreach ($product_id as $id){
+                                if ($row[0] == $id){
+                                  //function cartElement($productname,$productauthor,$productimg,$productbarcode,$productav){
+                            
+                                    cartElement($row[1],$row[2],$row[4],$row[0],$row[3]);   
+                                    //cartElement($row['product_image'], $row['product_name'],$row['product_price'], $row['id']);
+                                    
+                                }
+                            }
+                        }
+                    }else{
+                        echo "<h5>Cart is Empty</h5>";
+                    }
 
-            <!-------------->
-						<tr>
-							<td data-th="Product">
-								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="./IMAGES/ARCH books/Architectural Engineering Desing.jpg"/></div>
-									<div class="col-sm-10">
-										<h4 class="nomargin">Architectural Engineering Desing</h4>
-                                        <span>Author</span>
-										</div>
-								</div>
-							</td>
-							
-							
+                ?>
 
-              <td data-th="Barcode">
-								<p>301140000238</p>
-							</td>
-							
-							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true">Remove</i></button>								
-							</td>
-						</tr>
-              
-            <!-------------->
-              <tr>
-							<td data-th="Product">
-								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="./IMAGES/CE books/Construction Practices for Land Development.jpg"/></div>
-									<div class="col-sm-10">
-										<h4 class="nomargin">Construction Practices for Land Development</h4>
-                                        <span>Author</span>
-										</div>
-								</div>
-							</td>
-							
-							
-
-              <td data-th="Barcode">
-								<p>301140000238</p>
-							</td>
-							
-							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm"><i class="fa fa-minus-circle" aria-hidden="true">Remove</i></button>								
-							</td>
-						</tr>
-
-
-
-					</tbody>
-					<tfoot>
-						<tr class="visible-xs">
-							
-						</tr>
-						<tr>
-							<td><a href="books.php" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Selecting Books</a></td>
-							<td colspan="2" class="hidden-xs"></td>
-							
-							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
-						</tr>
-					</tfoot>
-				</table>
+            </div>
+        </div>
+      
+    </div>
 </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
 
-<div class="footer-top">
-  <div class="container">
-    <div class="row">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
 
-      <div class="col-lg-3 col-md-6 footer-contact">
-        <h3>Contact</h3>
-        <p>
-          MK University<br>
-          Mirpur Cantonment,<br>
-          Dhaka. <br><br>
-          <strong>Phone:</strong> +1 5589 55488 55<br>
-          <strong>Email:</strong> kothalibrary@gmail.com<br>
-        </p>
-      </div>
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Contact</h3>
+            <p>
+              378 Sugar Camp Road,<br>
+              Mirpur Cantonment,<br>
+              Dhaka. <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> bookishcloud@gmail.com<br>
+            </p>
+          </div>
 
-      <div class="col-lg-2 col-md-6 footer-links">
-        <h4>Useful Links</h4>
-        <ul>
-          <li><i class="bx bx-chevron-right"></i> <a href="">Home</a></li>
-          
-          <li><i class="bx bx-chevron-right"></i> <a href="">All the books</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="">Send us massage</a></li>
-        </ul>
-      </div>
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="profilePage.html">Account</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="">All the books</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="">Send us massage</a></li>
+            </ul>
+          </div>
 
 
-      <div class="col-lg-4 col-md-6 footer-newsletter">
-        <h4>Wanna get notification about new books?</h4>
-        <p>Stay Conected..</p>
-        <form action="" method="post">
-          <input type="email" name="email"><input type="submit" value="Click Here!">
-        </form>
-      </div>
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Wanna get notification about new books?</h4>
+            <p>Subscribe to out site..</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
 
         </div>
       </div>
     </div>
+
+  
     <?php ob_flush();  ?>
   
 </body>

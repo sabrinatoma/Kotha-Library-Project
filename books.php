@@ -3,6 +3,42 @@
 session_start();
 ?>
 
+<?php
+require_once('component1.php');
+
+if(isset($_POST['add'])){
+    //echo ($_POST['product_id']);
+    if(isset($_SESSION['cart'])){
+        
+        $item_array_id=array_column($_SESSION['cart'],"product_id");
+        print_r($item_array_id);
+       // print_r($_SESSION['cart']);
+       if(in_array($_POST['product_id'], $item_array_id)){
+        echo "<script>alert('Product is already added in the cart..!')</script>";
+        echo "<script>window.location = 'books.php'</script>";
+    
+    }
+       else{
+        $count = count($_SESSION['cart']); 
+        $item_array=array(
+            'product_id'=>$_POST['product_id']
+        );
+        $_SESSION['cart'][$count] = $item_array;
+        print_r($_SESSION['cart']);
+       }
+    
+    }
+    else{
+        $item_array=array(
+            'product_id'=>$_POST['product_id']
+        );
+        $_SESSION['cart'][0]=$item_array;
+        //print_r($_SESSION['cart']);
+    }
+}
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,62 +64,13 @@ session_start();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
+  <link rel="stylesheet" href="./CSSALL/style.css">
   <link href="./CSSAll/booksCSS.css" rel="stylesheet">
 
 
 
 <!-- ------------------------------------------------------ -->
 <!-- ----------------Add Book Script---------------- -->
-<!--
-<script>
-    $(document).ready(function () {
-  
-      // Denotes total number of rows
-      var rowIdx = 0;
-  
-      // jQuery button click event to add a row
-      $('#addBtn').on('click', function () {
-  
-        // Adding a row inside the tbody.
-        $('#tbody').append(`<tr id="R${++rowIdx}">
-             <td class="row-index text-center">
-             <input type="Text" placeholder="BookName">
-             </td>
-             <td class="row-index text-center">
-             <input type="Text" placeholder="AuthorName">
-             </td>
-             <td class="row-index text-center">
-             <input type="Text" placeholder="For which Level">
-             </td>
-             <td class="row-index text-center">
-             <input type="Text" placeholder="For which Term">
-             </td>
-             <td class="row-index text-center">
-             <input type="Text" placeholder="Course ID">
-             </td>
-             <td class="row-index text-center">
-             <label class="container">
-                <input type="radio" checked="checked" name="radio">Text
-                  <span class="checkmark"></span>
-            </label>
-            <label class="container">
-                <input type="radio" name="radio">Reference
-                <span class="checkmark"></span>
-            </label>
-             </td>
-              <td class="text-center">
-                <button class="btn btn-danger remove"
-                  type="button">Remove</button>
-                </td>
-              </tr>`);
-      
-  
-      
-      });
-    });
-  </script>
--->
 
 
   <!-- ======================================================== -->
@@ -149,7 +136,7 @@ session_start();
 
     <h1 class = "lg-title">Find Your Books!</h1>
 
-    <h4>Total Books: 240</h4>
+  
     <div class="fetbook">
 
         
@@ -216,582 +203,37 @@ session_start();
     </div>
   </div>
   
-  <ul id="autoWidth" class="cs-hidden">
-    <div class = "product-items">
-
-
-  <!--1------------------------------------>	
-  
-<!--box-slider--------------->
-  <div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="1" src="./IMAGES/A programmer's Guide.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>  	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-  <?php
-  echo'<h5>A programmers Guide</h5>';
-  echo'<span> Dr. William M Springer</span>';
-  echo'<h5>B-Yt346</h5>';
-  echo'<div>';
-    echo'<h6>Available: 6</h6>';
-  echo'</div>';
-  ?>
-  </div>
-    
-  </div>
-  
-  </div>		
-
-  <!--2------------------------------------>	
-  
-<!--box-slider--------------->
-  <div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="2" src="./IMAGES/Computer & Network Security.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Computer & Network Security</h5>
-  <span>Udo W. Pooch</span>
-  <h5>B-90Pgfs</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-  
-    
-  </div>
-  
-  </div>		
-
-  <!--3------------------------------------>	
-  
-<!--box-slider--------------->
-  <div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="3" src="./IMAGES/Data Structure Using C.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-  <h5>Data Structure Using C</h5>
-  <span>Anil k Ahlawat</span>
-  <h5>B-12dft</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-  
-  </div>
-  
-  </div>		
-
-  <!--4------------------------------------>	
-  
-<!--box-slider--------------->
-  <div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="4" src="./IMAGES/Dictionary of Computer Science.png">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Dictionary of Computer Science</h5>
-  <span>Dr. S. Anandamurugan</span>
-  <h5>B-VGF789</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-  
-  </div>
-  
-  </div>		
-
-  <!--5------------------------------------>	
-  
-<!--box-slider--------------->
-  <div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="5" src="./IMAGES/Funding A Revolution.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Funding A Revolution</h5>
-  <span> National Research Council</span>
-  <h5>B-FR234E</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-  
-  </div>
-  
-  </div>		
-
-  <!--1------------------------------------>	
-  
-<!--box-slider--------------->
-<div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="1" src="./IMAGES/ARCH books/Architectural Engineer's Solutions Suite.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-  <h5>Architectural Engineers Solutions Suite</h5>
-  <span>Tyler Gregory Hicks</span>
-  <h5>B-IJ65DS</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-
-  </div>
-  
-  </div>		
-
-  <!--2------------------------------------>	
-  
-<!--box-slider--------------->
-  <div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="2" src="./IMAGES/ARCH books/Architectural Engineering Desing.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Architectural Engineering Design</h5>
-  <span> Robert Brown Butler </span>
-  <h5>B-PKG4ds6</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-    
-  </div>
-  
-  </div>		
-
-  <!--3------------------------------------>	
-  
-<!--box-slider--------------->
-  <div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="3" src="./IMAGES/ARCH books/Engineering Design Graphics.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-  <h5>Engineering Design Graphics</h5>
-  <span>James H.Earle</span>
-  <h5>B-984RTv3</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-  </div>
-  
-  </div>		
-
-  <!--4------------------------------------>	
-  
-<!--box-slider--------------->
-  <div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="4" src="./IMAGES/ARCH books/Engineering Design Principles.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Engineering Design Principles</h5>
-  <span>Ken Hurst</span>
-  <h5>B-9a8yn34</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-    
-  </div>
-  
-  </div>		
-
-  <!--5------------------------------------>	
-  
-<!--box-slider--------------->
-  <div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="5" src="./IMAGES/ARCH books/Engineering Design.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Engineering Design</h5>
-  <span>George E. Dieter <br>Linda C. Schmidt</span>
-  <h5>B-PGB7334</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-  </div>
-  
-  </div>
-
-
-    <!--4------------------------------------>	
-  
-<!--box-slider--------------->
-<div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="4" src="./IMAGES/ARCH books/Machine Design.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Machine Design</h5>
-  <span>R.S. Khurmi<br>J.K. Gupta</span>
-  <h5>B-CE7y283</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-    
-  </div>
-  
-  </div>
-
-
-
-    <!--4------------------------------------>	
-  
-<!--box-slider--------------->
-<div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="4" src="./IMAGES/CE books/Civil Engineering Basics.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Civil Engineering Basics</h5>
-  <span>Er. Naveen Kumar</span>
-  <h5>B-J7en927</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-    
-  </div>
-  
-  </div>
-
-
-    <!--4------------------------------------>	
-  
-<!--box-slider--------------->
-<div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="4" src="./IMAGES/CE books/Construction Practices for Land Development.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Construction Practices for Land Development</h5>
-    <span>Mc Graw Hill</span>
-  <h5>B-K2h48dm</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-    
-  </div>
-  
-  </div>
-
-
-    
-
-
-    <!--4------------------------------------>	
-  
-<!--box-slider--------------->
-<div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="4" src="./IMAGES/CE books/Soil Mechanics and Foundations.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Soil Mechanics and Foundations</h5>
-  <span>Dr. B. C. Punmia<br>Ashik Kumar Jain<br>Arun Kumar Jain</span>
-  <h5>B-29g44ks</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-    
-  </div>
-  
-  </div>
-
-
-    <!--4------------------------------------>	
-  
-<!--box-slider--------------->
-<div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="4" src="./IMAGES/ME books/Automotive Mechanics.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Automotive Mechanics</h5>
-  <span>S Srinivasan</span>
-  <h5>B-Vh402jn</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-    
-  </div>
-  
-  </div>
-
-
-    <!--4------------------------------------>	
-  
-<!--box-slider--------------->
-<div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="4" src="./IMAGES/ME books/Basic Mechanical Engineering.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Basic Mechanical Engineering</h5>
-  <span>Dr. Sadhu Singh</span>
-  <h5>B-630s2j2</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-    
-  </div>
-  
-  </div>
-
-    <!--4------------------------------------>	
-  
-<!--box-slider--------------->
-<div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="4" src="./IMAGES/ME books/DEsign and Optimization of Thermal System.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Design and Optimization of Thermal System</h5>
-  <span>Yogesh Jaluria</span>
-  <h5>B-90h3j1n</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-    
-  </div>
-  
-  </div>
-
-    <!--4------------------------------------>	
-  
-<!--box-slider--------------->
-<div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="4" src="./IMAGES/ME books/Dictionary of Mechanical Engineering.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Dictionary of Mechanical Engineering</h5>
-  <span>Tony Atkins<br>Marcel Escudier</span>
-  <h5>B-3jna02n</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-    
-  </div>
-  
-  </div>
-
-   
-
-    
-
-    <!--4------------------------------------>	
-  
-<!--box-slider--------------->
-<div class="box">
-  <!--img-box---------->
-  <div class="slide-img">
-  <img alt="4" src="./IMAGES/PME books/Petroleum Engineering Explained.jpg">
-  <!--overlayer---------->
-  <div class="overlay">
-  <!--buy-btn------>	
-  <a href="#" class="buy-btn" name="sel">Select</a>	
-  </div>
-  </div>
-  <!--detail-box--------->
-  <div class="detail-box">
-  <!--type-------->
-  <div class="type">
-    <h5>Petroleum Engineering Explained</h5>
-  <span>David Shalicross</span>
-  <h5>B-6bwk2m1</h5>
-  <div>
-    <h6>Available: 6</h6>
-  </div>
-  </div>
-    
-  </div>
-  
-  </div>
-	
   
 
 
 </div>
-</ul>
 </div>
+
+<div class="container">
+    <div class="row text-cenetr py-5">
+            <?php
+       
+            $usr_name = 'SYSTEM';
+            $pass = '123ORacle';
+        
+            $connectionString = 'localhost/xe';
+        
+            $connect = oci_connect($usr_name,$pass,$connectionString);
+          
+            $show_table = 'select * from BookList';
+            $out = oci_parse($connect,$show_table);
+            oci_execute($out);
+            
+            //component1("Product4","$990","./upload/product4.png");
+            while (($row = oci_fetch_array($out, OCI_NUM)) ) {
+            
+              component1($row[1],$row[2],$row[4],$row[0],$row[3]);                      
+            //component1($row['product_name'], $row['product_price'], $row['product_image']);
+            }
+
+            
+            ?>
+    </div>
 </div>
   </section>
 
@@ -800,7 +242,7 @@ session_start();
   <!-- End #main -->
 
   
-
+  
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -842,6 +284,9 @@ session_start();
       </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
 
 <?php
 ob_flush();

@@ -277,6 +277,8 @@ session_start();
       $Premail = $_POST['Premail'];
       $bkname = $_POST['bkname'];
       $arname = $_POST['arname'];
+      $_SESSION['Pr_ID']=$Prid;
+      //$_SESSION['Pr_EmailID']=$Premail;
 
       $command1 = 'insert into Requst_book';
       $datas1 = ' values (' . "'".$Prname."'". "," . "'".$Prid."'". "," . "'".$Premail."'". ",". "'".$bkname."'". ",". "'".$arname."'".')';

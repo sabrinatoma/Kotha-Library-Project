@@ -153,6 +153,41 @@ session_start();
                                             </div>
                                         </div>
                                         <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">ID</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                            <?php
+                                    echo $_SESSION['IID'];
+                                    ?>
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Level</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                            <?php
+                                    echo $_SESSION['LLevel'];
+                                    ?>
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Term</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                            <?php
+                                    echo $_SESSION['TTerm'];
+                                    ?>
+                                            </div>
+                                        </div>
+                                        <hr />
                                         
                                         
                                         <div class="row">
@@ -253,19 +288,19 @@ session_start();
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Contact</h3>
             <p>
-              MK University<br>
+              378 Sugar Camp Road,<br>
               Mirpur Cantonment,<br>
               Dhaka. <br><br>
               <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> kothalibrary@gmail.com<br>
+              <strong>Email:</strong> bookishcloud@gmail.com<br>
             </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="">Home</a></li>
-              
+              <li><i class="bx bx-chevron-right"></i> <a href="Homepage.php">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="profilePage.php">Account</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="">All the books</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="">Send us massage</a></li>
             </ul>
@@ -274,9 +309,9 @@ session_start();
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Wanna get notification about new books?</h4>
-            <p>Stay Conected..</p>
+            <p>Subscribe to out site..</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Click Here!">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
           </div>
 

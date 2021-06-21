@@ -4,6 +4,8 @@
 session_start();
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +22,10 @@ session_start();
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <link href="CSSAll/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -86,16 +92,15 @@ $usr_name = 'DMBS1';
     
   <div>
               <p>Search:</p>  
-              <input class="form-control" id="myInput2" type="text" placeholder="Search..">
-              <br>
+              <input class="form-control" id="myInput3" type="text" placeholder="Search..">
+              <br></div>
               <?php
-              echo '<table id="myytable" class="table table-hover">'
+              echo '<table id="myyytable" class="table table-hover">'
               ?>
               
     <?php echo '<thead>
       <tr>
         <th>Faculty Name</th>
-        <th>Faculty ID</th>
         <th>Book Name</th>
         <th>Author Name</th>
         <th>For Level</th>
@@ -106,32 +111,49 @@ $usr_name = 'DMBS1';
     </thead>'?>
 
 <?php
-$show_table = 'select * from GIVESUGGESTION';
+$show_table = 'select FACULTY_NAME,FACULTY_ID,BOOK_NAME,AUTHOR_NAME,FOR_LEVEL,FOR_TERM,COURSE_ID,TYPE from GIVESUGGESTION';
 $out = oci_parse($connect,$show_table);
 oci_execute($out);
 
 while ($row = oci_fetch_array($out, OCI_RETURN_NULLS+OCI_ASSOC)) {
-  echo '<tr>';
+  /*echo '<tr>';
   foreach ($row as $item) {
       echo '<td>'.($item !== null ? htmlentities($item, ENT_QUOTES) : '&nbsp').'</td>';
              
   }
   
-  echo '</tr>';
+  echo '</tr>';*/
+
+  echo "
+  <tr>
+  <td>".$row['FACULTY_NAME']."</td>
+  <td>".$row['BOOK_NAME']."</td>
+  <td>".$row['AUTHOR_NAME']."</td>
+  <td>".$row['FOR_LEVEL']."</td>
+  <td>".$row['FOR_TERM']."</td>
+  <td>".$row['COURSE_ID']."</td>
+  <td>".$row['TYPE']."</td>
+  
+  </tr>
+  ";
+
+
+
 }
 
 ?>
 
 <?php echo '</table>' ?>
 
-</div></div>
+
+</div>
 
 <!------------------search------------>
 <script>
     $(document).ready(function(){
-      $("#myInput2").on("keyup", function() {
+      $("#myInput3").on("keyup", function() {
         var value = $(this).val().toLowerCase();
-        $("#myytable tr").filter(function() {
+        $("#myyytable tr").filter(function() {
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });

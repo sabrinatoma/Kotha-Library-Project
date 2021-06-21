@@ -80,7 +80,7 @@ session_start();
 <!--
       <span class="text1">Welcome to</span>
       <span class="text2">Kotha Library!</span> -->
- 
+      <a href="index.html" class="btn-get-started">LogOut</a>
     </div>
   </section><!-- End Hero -->
 
@@ -246,30 +246,30 @@ session_start();
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Contact</h3>
             <p>
-              MK University<br>
+              378 Sugar Camp Road,<br>
               Mirpur Cantonment,<br>
               Dhaka. <br><br>
               <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> kothalibrary@gmail.com<br>
+              <strong>Email:</strong> bookishcloud@gmail.com<br>
             </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="">Home</a></li>
-              
-              <li><i class="bx bx-chevron-right"></i> <a href="">All the books</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="">Send us massage</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="about.html">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="books.html">All the books</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="contact.html">Send us massage</a></li>
             </ul>
           </div>
 
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Wanna get notification about new books?</h4>
-            <p>Stay Conected..</p>
+            <p>Subscribe to out site..</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Click Here!">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
           </div>
 
