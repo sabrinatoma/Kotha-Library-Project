@@ -11,26 +11,16 @@ $connectionString1 = 'localhost/xe';
 
 $connect1 = oci_connect($usr_name1,$pass1,$connectionString1);
 
-$bn = $_GET['bn'];
-echo $bn;
-
 $tp = $_GET['tp'];
 echo $tp;
 
 
-$query = "DELETE FROM requst_book WHERE BOOK_NAME='$bn'";
-echo $query;
-  $run = oci_parse($connect1,$query);
-  oci_execute($run);
-
-
-
-  $query1 = "DELETE FROM requst_book WHERE TOPIC='$tp'";
+  $query1 = "DELETE FROM reporttable WHERE TOPIC='$tp'";
   echo $query1;
     $run1 = oci_parse($connect1,$query1);
     oci_execute($run1);
 
-  if($run)
+  if($run1)
   {
 
 

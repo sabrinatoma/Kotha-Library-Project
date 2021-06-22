@@ -3,17 +3,19 @@
 session_start();
 ?>
 
-
 <?php
 
     require 'phpmailer/PHPMailerAutoload.php';
     $mail = new PHPMailer;
 
-    $em = $_GET['em'];
-    echo $em;
-
     $naam = $_SESSION["NNAME"];
-    $b_name = $_SESSION['Bk_NAME'];
+    $rtopic = $_SESSION['R_TOPIC'];
+
+
+    $emr = $_GET['emr'];
+    echo $emr;
+    //$nam = $_GET['nam'];
+    //echo $nam;
 
     $mail->isSMTP();
 
@@ -26,20 +28,20 @@ session_start();
     $mail->Password = '302kotha';
 
     $mail->setFrom('librarykotha@gmail.com','Kotha Library');
-    $mail->addAddress($em);
+    $mail->addAddress($emr);
     $mail->addReplyTo('librarykotha@gmail.com');
 
     $mail->isHTML(true);
-    $mail->Subject = 'About Request of collecting books.';
+    $mail->Subject = 'About Report to Library.';
     //$mail->Body = '<h1 align=center> Hello!!</h1>';
 
-    $txt = "Hello!<br>We are glad to inform you that your request for collecting the book '".$b_name."' has been collected.<br>You can borrow the book and enjoy gaining knowledge.";
+    $txt = "Hello ".$naam."!<br>We are glad to inform you that your report about '".$rtopic."' has been solved.";
 
     $mail->Body = $txt;
+
     if(!$mail->send())
     {
-        echo "Mail not sent.";
-        echo "Row deleted!\n";
+        
       echo'<script>';
         echo'function pageRedirect() {';
             echo'window.location.replace("Report_at_Libr.php");';
@@ -65,8 +67,7 @@ session_start();
           
         }
         </script>";
-        echo "Mail sent!";
-        echo "Row deleted!\n";
+        
       echo'<script>';
         echo'function pageRedirect() {';
             echo'window.location.replace("Report_at_Libr.php");';

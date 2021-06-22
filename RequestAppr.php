@@ -99,7 +99,7 @@ session_start();
         <th>Name</th>
         <th>ID</th>
         <th>Book Name</th>
-        <th>Author Name</th>
+        <th>Barcode</th>
         <th></th>
         <th></th>
       </tr>

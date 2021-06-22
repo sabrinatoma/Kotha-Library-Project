@@ -127,42 +127,50 @@ session_start();
             <p>Search Librarian:</p>  
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
-              
-  <table class="table table-hover">
-    <thead>
+
+  <?php
+              echo '<table id="mytable1" class="table table-hover">'
+              ?>
+                
+    <?php echo '<thead>
       <tr>
         <th>Librarian ID</th>
-        <th>Name</th>
+        <th>Librarian Name</th>
         <th>Email</th>
-        <th>Phone No.</th>
-        <th>Designation</th>
+        <th>Phone</th>
       </tr>
-    </thead>
-    <tbody id="myTable">
-      <tr>
-        <td>l_564543234</td>
-        <td>MD kuddus Ali</td>
-        <td>kuddus@gmail.com</td>
-        <td>01928374652</td>
-        <td>Library Manager</td>                
-      </tr>
-      <tr>
-        <td>l_840239349</td>
-        <td>MD Rohim</td>
-        <td>rohim@gmail.com</td>
-        <td>017399402923</td>
-        <td>Library Manager</td>                
-      </tr>
-      <tr>
-        <td>l_5634524133</td>
-        <td>MD Taher vhuiya</td>
-        <td>tvhuiya@gmail.com</td>
-        <td>0192872932</td>
-        <td>Library Assistent</td>                
-      </tr>
-      
-    </tbody>
-  </table>
+    </thead>'?>
+
+    <?php
+      $usr_name = 'DMBS1';
+      $pass = '12345';
+  
+      $connectionString = 'localhost/xe';
+  
+      $connect = oci_connect($usr_name,$pass,$connectionString);
+  
+      if (!$connect){
+          echo '<p>Could Not Connect!</p>';
+      }
+
+      $show_table = "select * from PERSON_TABLE where ID like 'L%'";
+      $out = oci_parse($connect,$show_table);
+      oci_execute($out);
+
+      while ($row = oci_fetch_array($out, OCI_RETURN_NULLS+OCI_ASSOC)){
+        echo "
+              <tr>
+              <td>".$row['ID']."</td>
+              <td>".$row['NAME']."</td>
+              <td>".$row['EMAIL']."</td>
+              <td>".$row['PHONE_NUM']."</td>
+              
+              ";
+      }
+    ?>
+    <?php echo '</table>' ?>
+              
+  
 </div>
 
 <script>
@@ -276,6 +284,7 @@ session_start();
       $Prid = $_SESSION["IID"];
       $Premail = $_SESSION["Mail_ID"];
       $bkname = $_POST['bkname'];
+      $_SESSION['Bk_NAME'] = $bkname;
       $arname = $_POST['arname'];
       $_SESSION['Pr_ID']=$Prid;
       //$_SESSION['Pr_EmailID']=$Premail;
@@ -321,6 +330,7 @@ $usr_name = 'DMBS1';
       $Pemail = $_SESSION["Mail_ID"];
 
       $topic = $_POST['topic'];
+      $_SESSION['R_TOPIC'] = $topic;
       $reportmsg = $_POST['reportmsg'];
 
       $command = 'insert into ReportTable';
